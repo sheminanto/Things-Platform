@@ -2,7 +2,7 @@
 
 ### Django
 
-```sh
+```
 $ cd django_iot_platform
 $ pip install pipenv
 $ pipenv install
