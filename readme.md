@@ -14,3 +14,7 @@
     -cd react_iot_platform
     - npm install
     - npm start
+
+- Type some Markdown on the left
+- See HTML in the right
+- Magic
