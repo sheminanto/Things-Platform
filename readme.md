@@ -22,7 +22,7 @@ $ npm start
 ### FastAPI
 
 ```sh
-$ cd fasapi_iot_platform
+$ cd fastapi_iot_platform
 $ pipenv install
 $ pipenv run app
 ```
