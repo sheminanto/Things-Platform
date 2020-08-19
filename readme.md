@@ -11,11 +11,18 @@ $ cd iot_platform
 $ python manage.py runserver
 ```
 
-
-
 ### React
+
 ```sh
 $ cd react_iot_platform
 $ npm install
 $ npm start
+```
+
+### FastAPI
+
+```sh
+$ cd fasapi_iot_platform
+$ pipenv install
+$ pipenv run app
 ```
