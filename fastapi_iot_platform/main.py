@@ -1,7 +1,13 @@
+
 from typing import Optional
 from fastapi import FastAPI
+import models
+from sqlalchemy.orm import Session
+from database import SessionLocal, engine
+
 
 app = FastAPI()
+models.Base.metadata.create_all(bind=engine)
 
 
 @app.get("/", tags=["hello"])
