@@ -1,6 +1,6 @@
 from typing import Optional
-from db import models
-from db import engine
+from db import models, engine
+
 from main import app
 
 models.Base.metadata.create_all(bind=engine)
@@ -11,6 +11,6 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+@app.get("/{username}/{sensor_id}")
+def read_item(username: str, sensor_id: str, token):
+    return {"username": username, "sensor_id": sensor_id, "token_1": token}
