@@ -1,12 +1,8 @@
-
 from typing import Optional
-from fastapi import FastAPI
-import models
-from sqlalchemy.orm import Session
-from database import SessionLocal, engine
+from db import models
+from db import engine
+from main import app
 
-
-app = FastAPI()
 models.Base.metadata.create_all(bind=engine)
 
 
