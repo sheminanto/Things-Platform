@@ -1,1 +1,5 @@
 PORT = 5000
+RELOAD = True
+DEBUG = True
+WORKERS = 1
+HOST = '127.0.0.1'
