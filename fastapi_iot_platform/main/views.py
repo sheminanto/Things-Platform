@@ -1,21 +1,25 @@
-from typing import Optional
 from db import models, engine, crud, SessionLocal, schemas
 from fastapi import Depends
 from sqlalchemy.orm import Session
-from pydantic import BaseModel
 from typing import List
+from fastapi import FastAPI
+import time
 
-from main import app
+
+app = FastAPI()
 
 models.Base.metadata.create_all(bind=engine)
 
 
 def get_db():
+    start = time.time()
     db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
+        stop = time.time()
+        print(f"time taken : {stop - start}")
 
 # @app.on_event("startup")
 # def connect_db():
@@ -32,15 +36,15 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.get("/allusers", response_model=List[schemas.UserList])
+@app.get("/users", response_model=List[schemas.UserList])
 def test(db: Session = Depends(get_db)):
     return crud.get_all_users(db)
 
 
 @app.get("/insert")
-def createUser(name: str, id: int, db: Session = Depends(get_db)):
-    crud.create_user(name=name, id=id, db=db)
-    return {'username': name, 'id': id}
+def create_user(name: str, _id: int, db: Session = Depends(get_db)):
+    crud.create_user(name=name, _id=_id, db=db)
+    return {'username': name, 'id': _id}
 
 
 @app.get("/{username}/{sensor_id}")

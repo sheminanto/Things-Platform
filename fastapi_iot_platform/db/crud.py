@@ -7,13 +7,12 @@ def get_user_by_id(db: Session, user_id: int):
 
 
 def get_all_users(db: Session):
-    return db.query(models.User).offset(0).limit(5).all()
+    return db.query(models.User).all()
 
 
-def create_user(db: Session, name: str, id: int):
+def create_user(db: Session, name: str, _id: int):
     user = models.User()
     user.name = name
-    user.id = id
-
+    user.id = _id
     db.add(user)
     db.commit()

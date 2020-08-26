@@ -1,4 +1,4 @@
-from config import *
+from config import HOST, PORT, RELOAD, DEBUG, WORKERS
 import uvicorn
 
 if __name__ == "__main__":
