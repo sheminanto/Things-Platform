@@ -8,3 +8,11 @@ class UserList(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class ApiInsert(BaseModel):
+    token: str
+    data: list
+
+    class Config:
+        orm_mode = True

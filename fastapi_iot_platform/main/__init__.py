@@ -1,1 +1,1 @@
-from main.views import app
+from main.routes import app
