@@ -1,0 +1,57 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+#sidebar {
+  margin-top: 55px;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 999;
+  background: lightgrey;
+  color: #000000;
+  transition: all 0.3s;
+  padding-top: 20px;
+}
+.Content {
+  top: 20px;
+  padding-left: 100px;
+  padding-top: 100px;
+}
+
+.navbar {
+  size: 20px;
+  background: grey;
+}
+
+.card {
+  margin-top: 20pt;
+  margin-bottom: 20pt;
+}
+
+.btn {
+  margin-left: 10pt;
+  margin-top: 5pt;
+  margin-right: 10pt;
+  width: 170px;
+}
+
+.list-unstyled .btn {
+  /* background-color: bisque; */
+  border-radius: 4px;
+  margin-top: 15px;
+}
+
+.list-unstyled .active .btn {
+  background-color: lightblue;
+  border-radius: 4px;
+}
+.inside .Content {
+  margin-left: 150;
+  padding-top: 130;
+  margin-top: 100;
+  padding-left: 150px;
+}
