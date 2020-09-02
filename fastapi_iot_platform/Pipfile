@@ -9,6 +9,9 @@ verify_ssl = true
 fastapi = "*"
 uvicorn = "*"
 sqlalchemy = "*"
+pymysql = "*"
+influxdb = "*"
+bcrypt = "*"
 
 [requires]
 python_version = "3.8"
