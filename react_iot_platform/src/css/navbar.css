@@ -1,0 +1,15 @@
+.navbar {
+  size: 20px;
+  background: grey;
+  text-decoration-line: none;
+}
+.navbar-brand {
+  color: whitesmoke;
+  font-size: xx-large;
+  font-weight: bold;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.user {
+  color: white;
+  font-size: larger;
+}
