@@ -35,7 +35,6 @@ function App() {
               <Route component={Error404} />
             </Switch>
           </div>
-
           <Sidebar />
         </Suspense>
       </BrowserRouter>
