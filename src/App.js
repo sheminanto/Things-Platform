@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./NavBar.js";
 import Sidebar from "./SideBar.js";
 import Home from "./Home";
@@ -8,18 +8,26 @@ import Contact from "./Contact";
 import ChartDemo from "./ChartDemo";
 import Settings from "./Settings";
 import Profile from "./Profile.js";
+import Cards from "./Cards";
+import Overview from "./Overview";
+import Error404 from "./Error404";
 function App() {
   return (
     <div className="App pt-20">
       <BrowserRouter>
         <Navbar />
         <div className="inside container pt-20">
-          <Route path="/home" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/chartdemo" component={ChartDemo} />
-          <Route path="/settings" component={Settings} />
-          <Route path="/profile" component={Profile} />
+          <Switch>
+            <Route exact path="/" component={Overview} />
+            <Route path="/home" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/chartdemo" component={ChartDemo} />
+            <Route path="/settings" component={Settings} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/cards" component={Cards} />
+            <Route component={Error404} />
+          </Switch>
         </div>
 
         <Sidebar />

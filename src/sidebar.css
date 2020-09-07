@@ -1,4 +1,4 @@
-.wrapper {
+wrapper {
   display: flex;
   width: 100%;
 }
@@ -25,6 +25,13 @@
 .navbar {
   size: 20px;
   background: grey;
+  text-decoration-line: none;
+}
+.navbar-brand {
+  color: whitesmoke;
+  font-size: xx-large;
+  font-weight: bold;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .card {
@@ -32,21 +39,21 @@
   margin-bottom: 20pt;
 }
 
-.btn {
+.sidebar-options {
   margin-left: 10pt;
-  margin-top: 5pt;
+  margin-top: 10pt;
   margin-right: 10pt;
   width: 170px;
 }
 
-.list-unstyled .btn {
+.list-unstyled .div {
   /* background-color: bisque; */
   border-radius: 4px;
   margin-top: 15px;
 }
 
-.list-unstyled .active .btn {
-  background-color: lightblue;
+.list-unstyled .active .sidebar-options {
+  background-color: lavenderblush;
   border-radius: 4px;
 }
 .inside .Content {
@@ -54,4 +61,15 @@
   padding-top: 130;
   margin-top: 100;
   padding-left: 150px;
+}
+
+.navlink {
+  font-size: larger;
+  text-decoration-line: none;
+  color: black;
+}
+
+.user {
+  color: white;
+  font-size: larger;
 }

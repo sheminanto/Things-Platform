@@ -12,33 +12,32 @@ const SideBar = () => {
         <ul className="list-unstyled components">
           {/* <p>HEading 1</p> */}
           <li>
-            <NavLink to="/home">
+            <NavLink to="/home" className="navlink">
               <li>
-                <button className="btn btn-sm btn-light">Home</button>
+                <div className="container sidebar-options">Home</div>
               </li>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about">
-              <button className="btn btn-sm btn-light">About</button>
+            <NavLink to="/about" className="navlink">
+              <div className="container sidebar-options">About</div>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contact">
-              <button className="btn btn-sm btn-light">Contact</button>
+            <NavLink to="/contact" className="navlink">
+              <div className="container sidebar-options">Contact</div>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/chartdemo">
-              <button className="btn btn-sm btn-light">Chart Demo</button>
+            <NavLink to="/chartdemo" className="navlink">
+              <div className="container sidebar-options">Chart Demo</div>
             </NavLink>
           </li>
 
           <li>
-            <button className="btn btn-sm btn-light">Button2</button>
-          </li>
-          <li>
-            <button className="btn btn-sm btn-light">Button3</button>
+            <NavLink to="/cards" className="navlink">
+              <div className="container sidebar-options">Cards</div>
+            </NavLink>
           </li>
         </ul>
       </nav>

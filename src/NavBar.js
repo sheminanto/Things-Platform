@@ -9,16 +9,15 @@ const Navbar = () => {
           Things Platform
         </a>
         <div className="dropdown pr-5 mr-5">
-          <a
-            className="btn dropdown-toggle"
-            href=""
-            role="button"
+          <div
+            className="btn dropdown-toggle user"
+            // role="button"
             id="userLink"
             data-toggle="dropdown"
             aria-expanded="false"
           >
             User
-          </a>
+          </div>
           <ul className="dropdown-menu" aria-labelledby="userLink">
             <li>
               <NavLink className="dropdown-item" to="/profile">
