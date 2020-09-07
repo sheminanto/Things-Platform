@@ -20,14 +20,14 @@ const Navbar = () => {
           </div>
           <ul className="dropdown-menu" aria-labelledby="userLink">
             <li>
-              <NavLink className="dropdown-item" to="/profile">
+              <a className="dropdown-item" href="/profile">
                 Profile
-              </NavLink>
+              </a>
             </li>
             <li>
-              <NavLink className="dropdown-item" to="/settings">
+              <a className="dropdown-item" href="/settings">
                 Settings
-              </NavLink>
+              </a>
             </li>
             <li>
               <a className="dropdown-item" href="#">
