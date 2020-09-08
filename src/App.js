@@ -19,7 +19,7 @@ const About = lazy(() => import("./About"));
 function App() {
   return (
     <div className="App pt-20">
-      <BrowserRouter>
+      <BrowserRouter basename={`${process.env.PUBLIC_URL}/`}>
         <Suspense fallback={<div>Loading...</div>}>
           <Navbar />
           <div className="inside container pt-20">
