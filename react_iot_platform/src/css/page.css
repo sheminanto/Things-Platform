@@ -3,3 +3,17 @@
   padding-left: 100px;
   padding-top: 100px;
 }
+#profile_pic {
+  height: 100pt;
+  width: 100pt;
+}
+.profile {
+  width: 700px;
+  border-color: teal;
+}
+
+.prof_details {
+  font-size: medium;
+  font-weight: 500;
+  color: brown;
+}
