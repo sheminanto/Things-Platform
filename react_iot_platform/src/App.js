@@ -10,15 +10,16 @@ import Page5 from "./components/Page5";
 import Profile from "./components/Profile.js";
 import Settings from "./components/Settings.js";
 import Home from "./components/Home";
+import Welcome from "./components/Welcome";
 
 function App() {
-  const isLoggedin = true
+  const isLoggedin = false
   if(isLoggedin){
   return (
     <div className="App">
       <BrowserRouter>
         <NavBar />
-        
+        {/* <Welcome /> */}
         <SideBar />
         <Route exact path="/" component={Home} />
         <Route path="/page1" component={Page1} />
@@ -32,7 +33,7 @@ function App() {
     </div>
   );}
   else{  return (
-   <div className="container"> <center><h1>Not Logged in</h1></center></div>
+   <Welcome />
   );}
 }
 

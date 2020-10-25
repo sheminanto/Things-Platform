@@ -1,0 +1,36 @@
+.loginForm {
+  width: 400px;
+}
+
+.loginForm.card {
+  height: 900px;
+  width: 300pt;
+  padding: 10;
+}
+
+#username,
+#password {
+  margin: 10pt;
+  width: 255pt;
+}
+
+.card-content {
+  margin-bottom: 10pt;
+}
+
+.signUpForm {
+  height: 100pt;
+  width: 300pt;
+}
+.signUpForm .card-content {
+  margin: 10pt;
+}
+
+.form-control {
+  margin-bottom: 10pt;
+}
+
+#carouselExampleDark {
+  height: 500pt;
+  width: 450pt;
+}
