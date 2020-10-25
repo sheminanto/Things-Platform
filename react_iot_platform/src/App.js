@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
@@ -12,9 +13,18 @@ import Settings from "./components/Settings.js";
 import Home from "./components/Home";
 import Welcome from "./components/Welcome";
 
-function App() {
-  const isLoggedin = false
-  if(isLoggedin){
+class App extends React.Component {
+  state ={
+    login:false
+  }
+  _handleLogin =(status) => {
+    this.setState({
+      login:status
+    })
+  }
+  render(){
+  
+  if(this.state.login){
   return (
     <div className="App">
       <BrowserRouter>
@@ -33,8 +43,8 @@ function App() {
     </div>
   );}
   else{  return (
-   <Welcome />
-  );}
-}
+    <Welcome _handleLogin={this._handleLogin}/>
+  );
+}}}
 
 export default App;

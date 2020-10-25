@@ -5,7 +5,7 @@
 .loginForm.card {
   height: 900px;
   width: 300pt;
-  padding: 10;
+  padding: 10pt;
 }
 
 #username,
@@ -31,6 +31,39 @@
 }
 
 #carouselExampleDark {
-  height: 500pt;
-  width: 450pt;
+  height: 250pt;
+  width: auto;
+  margin-top: 60pt;
+}
+
+#recoverAcc {
+  text-decoration-line: none;
+  margin: 10pt;
+}
+
+#navbar {
+  color: antiquewhite;
+  font-family: "lucida sans unicode", "lucida grande", sans-serif;
+}
+
+#navbar .btn {
+  font-weight: 500;
+}
+
+.desc {
+  height: 430px;
+  width: 72%;
+  padding: 10pt;
+  font-weight: bold;
+}
+
+.divider {
+  color: brown;
+}
+
+.desclogin {
+  width: 72%;
+  padding: 10pt;
+  font-weight: bold;
+  height: 265px;
 }

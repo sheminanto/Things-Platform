@@ -37,8 +37,8 @@ class SignUp extends React.Component{
     }
     render(){
         return(
-        <div className="signUpForm container mt-5 float-right">
-            <div className="card">
+        <div className="signUpForm container mt-2 float-right">
+            <div className="card mb-2">
                 <div className="card-header">
                     <h4>Sign up</h4>
                 </div>
@@ -51,7 +51,7 @@ class SignUp extends React.Component{
                         <input id="password2" type="password" className="form-control" placeholder="Confirm Password" value={this.state.password2} onChange={this._handleChange}></input>
                         <input id="phone" type="number" className="form-control" placeholder="Phone" value={this.state.phone} onChange={this._handleChange}></input>
                         
-                        <center><button type="submit" className="btn btn-primary" value="Sign Up">Sign Up</button></center> 
+                        <center><button type="submit" className="btn btn-secondary" value="Sign Up">Sign Up</button></center> 
                     </form>
                 </div>
             </div>

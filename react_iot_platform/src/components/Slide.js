@@ -7,7 +7,7 @@ import "../css/welcome.css"
 class Slide extends React.Component{
     render(){
         return(
-            <div id="carouselExampleDark" class="carousel carousel-dark slide float-left" data-ride="carousel">
+            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleDark" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleDark" data-slide-to="1"></li>
