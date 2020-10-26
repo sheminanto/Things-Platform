@@ -44,12 +44,12 @@ class SignUp extends React.Component{
                 </div>
                 <div className="card-content">
                     <form onSubmit={this._handleSubmit}>
-                        <input id="fname" type="text" className="form-control" placeholder="First Name" value={this.state.fname} onChange={this._handleChange}></input>
-                        <input id="lname" type="text" className="form-control" placeholder="Last Name" value={this.state.lname} onChange={this._handleChange}></input>
-                        <input id="email" type="email" className="form-control" placeholder="Email" value={this.state.email} onChange={this._handleChange}></input>
-                        <input id="password1" type="password" className="form-control" placeholder="Password" value={this.state.password1} onChange={this._handleChange}></input>
-                        <input id="password2" type="password" className="form-control" placeholder="Confirm Password" value={this.state.password2} onChange={this._handleChange}></input>
-                        <input id="phone" type="number" className="form-control" placeholder="Phone" value={this.state.phone} onChange={this._handleChange}></input>
+                        <input id="fname" type="text" className="form-control" placeholder="First Name" value={this.state.fname} onChange={this._handleChange} required></input>
+                        <input id="lname" type="text" className="form-control" placeholder="Last Name" value={this.state.lname} onChange={this._handleChange} required></input>
+                        <input id="email" type="email" className="form-control" placeholder="E-mail" value={this.state.email} onChange={this._handleChange} required></input>
+                        <input id="password1" type="password" className="form-control" placeholder="Password" value={this.state.password1} onChange={this._handleChange} required></input>
+                        <input id="password2" type="password" className="form-control" placeholder="Confirm Password" value={this.state.password2} onChange={this._handleChange} required></input>
+                        <input id="phone" type="text" className="form-control" placeholder="Phone" value={this.state.phone} onChange={this._handleChange } required></input>
                         
                         <center><button type="submit" className="btn btn-secondary" value="Sign Up">Sign Up</button></center> 
                     </form>

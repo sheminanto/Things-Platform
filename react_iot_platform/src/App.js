@@ -12,6 +12,7 @@ import Profile from "./components/Profile.js";
 import Settings from "./components/Settings.js";
 import Home from "./components/Home";
 import Welcome from "./components/Welcome";
+import {connect} from 'react-redux';
 
 class App extends React.Component {
   state ={
@@ -23,6 +24,7 @@ class App extends React.Component {
     })
   }
   render(){
+    console.log(this.props)
   
   if(this.state.login){
   return (
@@ -47,4 +49,10 @@ class App extends React.Component {
   );
 }}}
 
-export default App;
+const mapStateToProps = (state) =>{
+  return{
+    posts:state.posts
+  }
+}
+
+export default connect(mapStateToProps)(App)
