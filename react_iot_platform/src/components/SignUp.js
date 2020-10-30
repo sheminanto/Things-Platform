@@ -3,12 +3,12 @@ import "../css/welcome.css";
 
 class SignUp extends React.Component{
     state = {
-        fname:null,
-        lname:null,
-        email:null,
-        password1:null,
-        password2:null,
-        phone:null   
+        fname:'',
+        lname:'',
+        email:'',
+        password1:'',
+        password2:'',
+        phone:''   
     }
     _handleChange = (e) => {
         this.setState({
@@ -44,7 +44,7 @@ class SignUp extends React.Component{
                 </div>
                 <div className="card-content">
                     <form onSubmit={this._handleSubmit}>
-                        <input id="fname" type="text" className="form-control" placeholder="First Name" value={this.state.fname} onChange={this._handleChange} required></input>
+                        <input id="fname" type="text" className="form-control" placeholder="First Name"  value={this.state.fname} onChange={this._handleChange} required></input>
                         <input id="lname" type="text" className="form-control" placeholder="Last Name" value={this.state.lname} onChange={this._handleChange} required></input>
                         <input id="email" type="email" className="form-control" placeholder="E-mail" value={this.state.email} onChange={this._handleChange} required></input>
                         <input id="password1" type="password" className="form-control" placeholder="Password" value={this.state.password1} onChange={this._handleChange} required></input>

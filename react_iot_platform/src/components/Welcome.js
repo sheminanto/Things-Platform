@@ -5,9 +5,7 @@ import SignUp from './SignUp';
 import Slide from './Slide';
 
 class Welcome extends React.Component{
-    constructor(props){
-        super(props)
-    }
+  
     state = {
         _form:'signup'
     }
@@ -23,7 +21,7 @@ class Welcome extends React.Component{
         this.props._handleLogin(status)
     }
     render(){
-        if(this.state._form == 'signup'){
+        if(this.state._form === 'signup'){
             console.log(this.props)
         return(
             <div className="container-fluid">
@@ -65,7 +63,7 @@ class Welcome extends React.Component{
             
            
         );}
-        else if(this.state._form == 'login'){
+        else if(this.state._form === 'login'){
             return(
                 <div className="container-fluid">
                     <nav id="navbar" className="navbar fixed-top">
