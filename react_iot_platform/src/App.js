@@ -16,7 +16,7 @@ import {connect} from 'react-redux';
 
 class App extends React.Component {
   state ={
-    login:false
+    login:this.props.posts[0].status
   }
   _handleLogin =(status) => {
     this.setState({
@@ -24,7 +24,7 @@ class App extends React.Component {
     })
   }
   render(){
-    console.log(this.props)
+    console.log(this.props.posts[1].name)
   
   if(this.state.login){
   return (

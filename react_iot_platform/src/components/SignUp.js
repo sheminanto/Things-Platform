@@ -1,6 +1,6 @@
 import React from 'react';
 import "../css/welcome.css";
-
+import axios from 'axios';
 class SignUp extends React.Component{
     state = {
         fname:'',
@@ -25,6 +25,19 @@ class SignUp extends React.Component{
         console.log(this.state.password1);
         console.log(this.state.password2);
         console.log(this.state.phone);
+        const userReg = {
+            fname:this.state.fname,
+            lname:this.state.lname,
+            email:this.state.email,
+            password1:this.state.password1,
+            password2:this.state.password2,
+            phone:this.state.phone
+        }
+        axios.post(`http://127.0.0.1:5000/signup`,userReg)
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
         this.setState({
             fname:'',
             lname:'',
@@ -51,7 +64,7 @@ class SignUp extends React.Component{
                         <input id="password2" type="password" className="form-control" placeholder="Confirm Password" value={this.state.password2} onChange={this._handleChange} required></input>
                         <input id="phone" type="text" className="form-control" placeholder="Phone" value={this.state.phone} onChange={this._handleChange } required></input>
                         
-                        <center><button type="submit" className="btn btn-secondary" value="Sign Up">Sign Up</button></center> 
+                        <center><button type="submit" className="btn btn-success btnfm" value="Sign Up">Sign Up</button></center> 
                     </form>
                 </div>
             </div>
