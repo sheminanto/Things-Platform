@@ -1,81 +1,76 @@
 import React from "react";
 import "../css/page.css";
-
-const Home = () => {
+import {connect} from 'react-redux';
+class Home extends React.Component {
+  state = {
+    alerts:this.props.posts[0].status
+  }
+  render(){
+    // console.log(this.state.alerts);
   return (
     <div className="Content container-lg">
       
-        <h2 className="pl-2">Overview</h2>
-        <div class="d-flex p-2 bd-highlight bg-light my-3">Latest Updates!</div>
-        <div class="list-group ">
-        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-        <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">List group item heading</h5>
-      <small>3 days ago</small>
-    </div>
-    <p class="mb-1">Update 1</p>
-    <small>Description</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small class="text-muted">3 days ago</small>
-    </div>
-    <p class="mb-1">Update 2</p>
-    <small class="text-muted">Description</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small class="text-muted">3 days ago</small>
-    </div>
-    <p class="mb-1">Update 3 </p>
-    <small class="text-muted">Description</small>
-  </a>
-</div>
-<div class="d-flex p-2 bd-highlight bg-light my-3">Currently Active Devices</div>
-<div class="row my-2">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-</div>
+        <h2 className="mx-3">Overview</h2>
+        <div class="alert p-2 bd-highlight bg-danger text-light my-3 mx-3">Alerts !</div>
+        <div class="alert alert-danger mx-3" role="alert">
+          <h4 class="alert-heading">Well done!</h4>
+          <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+          <hr/>
+          <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+          <button type="button" class="btn btn-outline-danger btn-md mt-2" data-dismiss="alert" aria-label="Close">Dismiss</button>
+
+        </div>
+
+        <div class="alert alert-warning mx-3" role="alert">
+          <h4 class="alert-heading">Well done!</h4>
+          <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+          <hr/>
+          <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+          <button type="button" class="btn btn-outline-warning btn-md mt-2" data-dismiss="alert" aria-label="Close">Dismiss</button>
+
+        </div>
+        <div class="alert alert-success mx-3" role="alert">
+          A simple success alert—check it out!
+        </div>
+      <div class="alert p-2 bd-highlight bg-info text-light my-3 mx-3  ">Your Devices</div>
+        <table class="table table-striped table-hover mx-3">
+          <thead>
+            <tr><th>#id</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Status</th></tr>
+  
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Temperature Sensor</td>
+              <td>Garden</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Temperature Sensor</td>
+              <td>Living Room</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Temperature Sensor</td>
+              <td>Kitchen</td>
+              <td>Inactive</td>
+            </tr>
+          </tbody>
+  
+        </table>
       
-    </div>
-  );
-};
-export default Home;
+      </div>
+  );}
+}
+const mapStateToProps = (state) =>{
+  return{
+    posts:state.posts
+  }
+}
+
+export default connect(mapStateToProps)(Home);
