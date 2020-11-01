@@ -4,9 +4,9 @@ import "../css/page.css";
 const Page2 = () => {
   return (
     <div className="Content container">
-      <center>
-        <h1>Page2</h1>
-      </center>
+      
+        <h2>Add Devices</h2>
+      
     </div>
   );
 };
