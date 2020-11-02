@@ -24,7 +24,7 @@ class App extends React.Component {
     })
   }
   render(){
-    console.log(this.props.posts[1].name)
+    console.log(this.props)
   
   if(this.state.login){
   return (
