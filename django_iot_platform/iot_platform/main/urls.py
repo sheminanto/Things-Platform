@@ -21,6 +21,7 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register(r'heroes', views.HeroViewSet)
+router.register(r'users', views.UserViewSet)
 
 
 app_name = "main"
@@ -28,6 +29,8 @@ app_name = "main"
 urlpatterns = [
     # path("", views.homepage, name="homepage"),
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('checkserver', views.checkserver, name='checkserver')
+
 
 ]
