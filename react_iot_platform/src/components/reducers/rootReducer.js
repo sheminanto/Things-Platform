@@ -1,6 +1,6 @@
 const initState = {
   posts: [
-    { name: "login", status: true },
+    { name: "login", status: false },
     {
       name: "Shreyas S Kumar",
       username: "shreyas.sk",
