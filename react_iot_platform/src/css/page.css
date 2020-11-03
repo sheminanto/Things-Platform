@@ -17,3 +17,7 @@
   font-weight: 500;
   color: brown;
 }
+
+#addDevice {
+  width: 125px;
+}

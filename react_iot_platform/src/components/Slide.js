@@ -17,8 +17,8 @@ class Slide extends React.Component{
                     <div className="carousel-item active" data-interval="10000">
                         <img src={p1} className="d-block w-100" alt="..."/>
                         <div className="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            <h5>Monitor your devices from any where in the world!</h5>
+                            
                         </div>
                     </div>
                     <div className="carousel-item" data-interval="2000">

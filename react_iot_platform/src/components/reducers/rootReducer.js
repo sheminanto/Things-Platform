@@ -1,10 +1,10 @@
 const initState = {
     posts:[
-        {name:'login',status:true},
+        {name:'login',status:false},
         {name:'Shreyas S Kumar',username:'shreyas.sk',email:'shreyassreekripa@gmail.com',phone:'9061653047'}
     ],
      alerts:[
-        {name:'Alert 1',cat:'critical'},
+        {name:'Alert 1',cat:'danger'},
         {name:'Alert 2',cat:'warning'}
     ],
     devices:[

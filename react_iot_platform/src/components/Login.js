@@ -29,10 +29,17 @@ class Login extends React.Component{
         }
         const username = this.state.username.toString()
         console.log(user);
-        axios.post(`http://127.0.0.1:5000/login`,user)
+        axios.post(`http://127.0.0.1:8000/auth/token/login`,user)
       .then(res => {
         console.log(res);
-        console.log(res.data);
+        console.log(res.data.auth_token);
+        console.log('token '+res.data.auth_token)
+        axios.post(`http://127.0.0.1:8000/auth/users/me`,user,{headers:{
+            Authorization:'token '+res.data.auth_token
+        }}).then(res =>{
+            console.log(res)
+        })
+        
       })
        
         

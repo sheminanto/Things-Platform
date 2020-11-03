@@ -14,9 +14,11 @@ class Home extends React.Component {
         <h2 className="mx-3">Overview</h2>
         <div className="alert p-2 bd-highlight bg-danger text-light my-3 mx-3">Alerts !</div>
         {this.state.alerts.length ? <div>{this.state.alerts.map(alert => {
+          let cl = 'alert mx-3 alert-'+alert.cat;
+          console.log(cl)
         return(
-      
-          <div className="alert alert-danger mx-3" role="alert">
+         
+          <div className={cl} role="alert">
             <h4 className="alert-heading">{alert.name}</h4>
             <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
             <hr/>

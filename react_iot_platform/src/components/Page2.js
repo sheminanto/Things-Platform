@@ -18,12 +18,13 @@ class Page2 extends React.Component {
 }
 _handleSubmit = (e) => {
   e.preventDefault();
-  console.log(this.state.devices)
-  this.props.addDevice(this.state);
+  console.log(this.state)
+  this.props.addDevice(this.state.devices);
+  
 }
 
   render(){
-    console.log(this.props)
+    // console.log(this.props)
   return (
     <div className="Content container">
       
