@@ -113,6 +113,7 @@ AUTH_USER_MODEL = 'authapp.User'
 DJOSER = {
     'LOGIN_FIELD': 'email',
     'USER_CREATE_PASSWORD_RETYPE': True,
+    # 'CREATE_SESSION_ON_LOGIN': True,
     'SERIALIZERS': {
         'user_create': 'authapp.serializers.UserCreateSerializer',
         'user': 'authapp.serializers.UserCreateSerializer',
@@ -122,7 +123,7 @@ DJOSER = {
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
