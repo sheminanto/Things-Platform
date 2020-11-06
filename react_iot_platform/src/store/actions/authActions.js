@@ -39,6 +39,17 @@ export const userSignup = (user) =>{
         axios.post(`http://things-platform.herokuapp.com/auth/users/`,user).then(res =>{
             console.log(res);
             dispatch({type:'REG_SUCCESS',user})
+            //post req to auto login after successful sign-up
+            axios.post(`http://things-platform.herokuapp.com/auth/token/login/`,{email:user.email,password:user.password}).then(res =>{
+            console.log(res);
+            localStorage.setItem('token',res.data.auth_token)
+            dispatch({type:'AUTH_SUCCESS',user}) 
+        }).catch(err=>{
+            console.log(err.response.data.code  );
+            console.log(err.response.data);
+            dispatch({type:'AUTH_FAILED',err})
+        })
+           
         }).catch(err=>{
             console.log(err.response);
             dispatch({type:'REG_FAILED',err})

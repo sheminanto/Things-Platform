@@ -12,7 +12,7 @@ const NavBar = (props) => {
     if(!link) return <Redirect to='/signin'/>
     return(
         <nav className="navbar bg-dark bg-gradient  ">
-            <div className="container-fluid">
+            <div className="container-sm">
                 <Link to='/' className="navbar-brand text-light" href="#"><img className="rounded d-inline-block align-top" width="30" height="30" src={logo} alt='' />  THINGS PLATFORM</Link>
                 {link}
             </div>
