@@ -43,7 +43,6 @@ form h5 {
 
 .authbtn,
 .addbtn {
-  width: 290px;
   min-height: 48px;
 }
 
@@ -71,4 +70,8 @@ form h5 {
 
 .error {
   font-size: small;
+}
+
+.form-rounded {
+  border-radius: 10rem;
 }

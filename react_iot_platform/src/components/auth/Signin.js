@@ -24,17 +24,17 @@ class Signin extends Component {
         const link = localStorage.getItem('token')
         if(link) return <Redirect to='/'/>
         return (
-            <div className="signin container rounded-lg col-sm-3 ">
+            <div className="signin container form-rounded col-sm-3 ">
                 <form onSubmit={this.handleSubmit} className="form-control shadow">
                     <h4 className="text-dark mt-2">Sign in</h4>
                     <hr/>
                     <div className="input-control">
-                        <input className="form-control textbox" type="email" id="email" placeholder="E-mail" onChange={this.handleChange} required/>
+                        <input className="form-control textbox rounded-pill" type="email" id="email" placeholder="E-mail" onChange={this.handleChange} required/>
                         {this.props.autherr ? <div className="text-danger error">{this.props.autherr.response.data.email}</div>:null}
-                        <input className="form-control textbox" type="password" id="password" placeholder="Password" onChange={this.handleChange} required/>
+                        <input className="form-control textbox rounded-pill" type="password" id="password" placeholder="Password" onChange={this.handleChange} required/>
                         {this.props.autherr ? <div className="text-danger error">{this.props.autherr.response.data.password}</div>:null} 
                         {this.props.autherr ? <div className="text-danger error mt-2" align="center">{this.props.autherr.response.data.non_field_errors}</div>:null} 
-                        <center><button type="submit" className="btn btn-success authbtn mt-4 mb-5" onClick={this.handleSubmit}>Login</button></center>         
+                        <center><button type="submit" className="btn btn-success btn-block authbtn rounded-pill mt-4 mb-5" onClick={this.handleSubmit}>Login</button></center>         
                     </div>
                 </form>
                 
