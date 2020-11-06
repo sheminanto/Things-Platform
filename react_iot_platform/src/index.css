@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600&display=swap");
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif; */
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* background: url(./images/bg.png) no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  min-height: 100%; */
+  background: #eee;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+form {
+  padding: 20px;
+  margin-top: 40px;
+}
+
+form button,
+form h5 {
+  margin: 10px 0;
+}
+
+.btn-floating {
+  border-radius: 50%;
+}
+
+.navigation {
+  text-decoration-line: none;
+}
+
+.navbar-brand {
+  font-size: x-large;
+}
+.authbtn,
+.addbtn {
+  min-height: 48px;
+  font-weight: 500;
+  font-size: large;
+}
+
+.errorpg {
+  padding: 100px;
+}
+
+.navigation {
+  color: white;
+}
+
+.list-inline {
+  padding-top: 5px;
+}
+/* 
+.signup {
+  border-right: 2px solid;
+  border-color: grey;
+} */
+
+.textbox {
+  height: 50px;
+  margin-top: 20px;
+}
+
+.error {
+  font-size: small;
+  margin-left: 5pt;
+  margin-top: 1pt;
+}
+
+.form-rounded {
+  border-radius: 10rem;
+}
