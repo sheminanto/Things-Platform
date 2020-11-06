@@ -1,2 +1,6 @@
-// var base_url = {base:'http://things-platform.herokuapp.com/'}
-// export default base_url
+//first.js
+const domain = {
+    localhost: 'http://127.0.0.1:8000/',
+    public:'http://things-platform.herokuapp.com/'
+};
+export { domain };

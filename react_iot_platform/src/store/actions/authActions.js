@@ -1,9 +1,14 @@
 import axios from 'axios'
-import '../../config/domain.js'
+import { domain } from '../../config/domain.js'
 export const userLogin = (user) =>{
-    // console.log("base",base_url);
+    const url = domain.localhost+'auth/token/login/'
     return(dispatch,getState) => {
-        axios.post(`http://things-platform.herokuapp.com/auth/token/login/`,user).then(res =>{
+        axios(
+            {
+                method:'post',
+                url:url,
+                data:user
+            }).then(res =>{
             console.log(res);
             localStorage.setItem('token',res.data.auth_token)
             dispatch({type:'AUTH_SUCCESS',user}) 
@@ -17,13 +22,17 @@ export const userLogin = (user) =>{
 }
 
 export const userLogout = () =>{
+    const url = domain.localhost+'auth/token/logout/'
     return(dispatch,getState)=>{
-        axios.post(`http://things-platform.herokuapp.com/auth/token/logout/`,null,{
+        axios(
+            {
+                method:'post',
+                url:url,
+                data:null,
                 headers:{
                     Authorization:'Token '+localStorage.getItem('token')
                 }
             }).then(res=>{
-                console.log(res);
                 localStorage.clear();
                 dispatch({type:'LOGOUT_SUCCESS'});
             }).catch(err=>{
@@ -34,24 +43,34 @@ export const userLogout = () =>{
 
 
 export const userSignup = (user) =>{
+    const url = domain.localhost+'auth/users/'
     return(dispatch,getState) =>{
-        console.log("inside userSignUp",user);
-        axios.post(`http://things-platform.herokuapp.com/auth/users/`,user).then(res =>{
-            console.log(res);
+        axios(
+            {
+                method:'post',
+                url:url,
+                data:user
+
+            }).then(res =>{
             dispatch({type:'REG_SUCCESS',user})
             //post req to auto login after successful sign-up
-            axios.post(`http://things-platform.herokuapp.com/auth/token/login/`,{email:user.email,password:user.password}).then(res =>{
-            console.log(res);
-            localStorage.setItem('token',res.data.auth_token)
-            dispatch({type:'AUTH_SUCCESS',user}) 
-        }).catch(err=>{
-            console.log(err.response.data.code  );
-            console.log(err.response.data);
-            dispatch({type:'AUTH_FAILED',err})
-        })
+            axios(
+                {
+                    method:'post',
+                    url:domain.localhost+'auth/token/login/',
+                    data:{email:user.email,password:user.password}
+                }).then(res =>{
+                console.log(res);
+                localStorage.setItem('token',res.data.auth_token)
+                dispatch({type:'AUTH_SUCCESS',user}) 
+            }).catch(err=>{
+                console.log(err.response.data);
+                console.log(err.response.data);
+                dispatch({type:'AUTH_FAILED',err})
+            })
+          
            
         }).catch(err=>{
-            console.log(err.response);
             dispatch({type:'REG_FAILED',err})
         })
     }
