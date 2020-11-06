@@ -34,7 +34,7 @@ class Signin extends Component {
                         <input className="form-control textbox rounded-pill" type="password" id="password" placeholder="Password" onChange={this.handleChange} required/>
                         {this.props.autherr ? <div className="text-danger error">{this.props.autherr.response.data.password}</div>:null} 
                         {this.props.autherr ? <div className="text-danger error mt-2" align="center">{this.props.autherr.response.data.non_field_errors}</div>:null} 
-                        <center><button type="submit" className="btn btn-success btn-block authbtn rounded-pill mt-4 mb-5" onClick={this.handleSubmit}>Login</button></center>         
+                        <center><hr/><button type="submit" className="btn btn-outline-success btn-block authbtn rounded-pill mt-3 mb-4" onClick={this.handleSubmit}>Login</button></center>         
                     </div>
                 </form>
                 

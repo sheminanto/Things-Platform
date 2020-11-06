@@ -13,7 +13,7 @@ const NavBar = (props) => {
     return(
         <nav className="navbar bg-dark bg-gradient  ">
             <div className="container-fluid">
-                <Link to='/' className="navbar-brand text-light" href="#"><img className="rounded d-inline-block align-top" width="30" height="30" src={logo} alt='' /> THINGS PLATFORM</Link>
+                <Link to='/' className="navbar-brand text-light" href="#"><img className="rounded d-inline-block align-top" width="30" height="30" src={logo} alt='' />  THINGS PLATFORM</Link>
                 {link}
             </div>
         </nav>

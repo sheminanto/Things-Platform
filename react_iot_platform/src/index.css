@@ -41,9 +41,14 @@ form h5 {
   text-decoration-line: none;
 }
 
+.navbar-brand {
+  font-size: x-large;
+}
 .authbtn,
 .addbtn {
   min-height: 48px;
+  font-weight: 500;
+  font-size: large;
 }
 
 .errorpg {
@@ -70,6 +75,8 @@ form h5 {
 
 .error {
   font-size: small;
+  margin-left: 5pt;
+  margin-top: 1pt;
 }
 
 .form-rounded {

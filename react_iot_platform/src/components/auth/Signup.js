@@ -51,7 +51,7 @@ class Signup extends Component {
                         <input className="form-control textbox rounded-pill" type="password" id="re_password" placeholder="Confirm Password" onChange={this.handleChange} required/>
                         {this.props.regerr ? <div className="text-danger error">{this.props.regerr.response.data.re_password}</div>:null}
                         {this.props.regerr ? <div className="text-danger error" align="center">{this.props.regerr.response.data.non_field_errors}</div>:null}  
-                        <center><button type="submit" className="btn btn-success authbtn mt-3 mb-4 btn-block rounded-pill " onClick={this.handleSubmit}>Sign Up</button></center>
+                        <center><hr/><button type="submit" className="btn btn-outline-success authbtn mt-3 mb-4 btn-block rounded-pill " onClick={this.handleSubmit}>Sign Up</button></center>
                         
                    
                 </form>
