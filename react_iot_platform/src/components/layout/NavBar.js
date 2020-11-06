@@ -4,6 +4,7 @@ import SignedLinks from './SignedLinks'
 import SignedOutLinks from './SignedOutLinks'
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom'
+import logo from '../../images/logo.png'
 
 const NavBar = (props) => {
    
@@ -12,7 +13,7 @@ const NavBar = (props) => {
     return(
         <nav className="navbar bg-dark bg-gradient  ">
             <div className="container-fluid">
-                <Link to='/' className="navbar-brand text-light" href="#"><h4>THINGS PLATFORM</h4></Link>
+                <Link to='/' className="navbar-brand text-light" href="#"><img className="rounded d-inline-block align-top" width="30" height="30" src={logo} alt='' /> THINGS PLATFORM</Link>
                 {link}
             </div>
         </nav>

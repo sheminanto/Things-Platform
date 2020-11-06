@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { userLogin} from '../../store/actions/authActions'
+import {userLogin} from '../../store/actions/authActions'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 
@@ -8,7 +8,6 @@ class Signin extends Component {
         email:'',
         password:''
     }
-
     handleChange = (e) =>{
         this.setState({
             [e.target.id]:e.target.value
@@ -20,25 +19,22 @@ class Signin extends Component {
         console.log(this.state);
         this.props.userLogin(this.state)
     }
-
-
     render() {
         // console.log(this.props.autherr.response);
         const link = localStorage.getItem('token')
         if(link) return <Redirect to='/'/>
         return (
-            <div className="signin container rounded-lg col-sm-4 ">
-                <form className="form-control shadow needs-validation" novalidate onSubmit={this.handleSubmit}>
-                    <h5>Sign in</h5>
+            <div className="signin container rounded-lg col-sm-3 ">
+                <form onSubmit={this.handleSubmit} className="form-control shadow">
+                    <h4 className="text-dark mt-2">Sign in</h4>
                     <hr/>
                     <div className="input-control">
-                        <label htmlFor="email" className="form-label">Email</label>
-                        <input className="form-control" type="email" id="email" onChange={this.handleChange} required/><br/>
-                        
-                        <label htmlFor="password" className="form-label">Password</label>
-                        <input className="form-control" type="password" id="password" onChange={this.handleChange} required/><br/>
-                        <center><button type="submit" className="btn btn-success authbtn" onClick={this.handleSubmit}>Login</button></center>
-                        {this.props.autherr ? <div className="text-danger" align="center">{this.props.autherr.response.data.non_field_errors}</div>:null} 
+                        <input className="form-control textbox" type="email" id="email" placeholder="E-mail" onChange={this.handleChange} required/>
+                        {this.props.autherr ? <div className="text-danger error">{this.props.autherr.response.data.email}</div>:null}
+                        <input className="form-control textbox" type="password" id="password" placeholder="Password" onChange={this.handleChange} required/>
+                        {this.props.autherr ? <div className="text-danger error">{this.props.autherr.response.data.password}</div>:null} 
+                        {this.props.autherr ? <div className="text-danger error mt-2" align="center">{this.props.autherr.response.data.non_field_errors}</div>:null} 
+                        <center><button type="submit" className="btn btn-success authbtn mt-4 mb-5" onClick={this.handleSubmit}>Login</button></center>         
                     </div>
                 </form>
                 

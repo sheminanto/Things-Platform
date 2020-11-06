@@ -1,7 +1,9 @@
 import axios from 'axios'
+import '../../config/domain.js'
 export const userLogin = (user) =>{
+    // console.log("base",base_url);
     return(dispatch,getState) => {
-        axios.post(`http://127.0.0.1:8000/auth/token/login/`,user).then(res =>{
+        axios.post(`http://things-platform.herokuapp.com/auth/token/login/`,user).then(res =>{
             console.log(res);
             localStorage.setItem('token',res.data.auth_token)
             dispatch({type:'AUTH_SUCCESS',user}) 
@@ -16,7 +18,7 @@ export const userLogin = (user) =>{
 
 export const userLogout = () =>{
     return(dispatch,getState)=>{
-        axios.post(`http://127.0.0.1:8000/auth/token/logout/`,null,{
+        axios.post(`http://things-platform.herokuapp.com/auth/token/logout/`,null,{
                 headers:{
                     Authorization:'Token '+localStorage.getItem('token')
                 }
@@ -34,11 +36,12 @@ export const userLogout = () =>{
 export const userSignup = (user) =>{
     return(dispatch,getState) =>{
         console.log("inside userSignUp",user);
-        axios.post(`http://127.0.0.1:8000/auth/users/`,user).then(res =>{
+        axios.post(`http://things-platform.herokuapp.com/auth/users/`,user).then(res =>{
             console.log(res);
             dispatch({type:'REG_SUCCESS',user})
         }).catch(err=>{
-            console.log(err);
+            console.log(err.response);
+            dispatch({type:'REG_FAILED',err})
         })
     }
 }

@@ -30,25 +30,30 @@ class Signup extends Component {
         const link = localStorage.getItem('token')
         if(link) return <Redirect to='/'/>
         return (
-            <div className="container rounded col-sm-4 ">
+            <div className="container rounded col-sm-4">
                 <form className="form-control shadow" onSubmit={this.handleSubmit}>
-                    <h5>Sign up</h5>
+                    <h4 className="text-dark mt-2">Sign Up</h4>
                     <hr/>
-                    <div className="input-control">
-                        <label htmlFor="first_name" className="form-label">First Name</label>
-                        <input className="form-control" type="text" id="first_name" onChange={this.handleChange}/><br/>
-                        <label htmlFor="last_name" className="form-label">Last Name</label>
-                        <input className="form-control" type="text" id="last_name" onChange={this.handleChange}/><br/>
-                        <label htmlFor="username" className="form-label">Username</label>
-                        <input className="form-control" type="text" id="username" onChange={this.handleChange}/><br/>
-                        <label htmlFor="email" className="form-label">Email</label>
-                        <input className="form-control" type="email" id="email" onChange={this.handleChange}/><br/>
-                        <label htmlFor="password" className="form-label">Password</label>
-                        <input className="form-control" type="password" id="password" onChange={this.handleChange} required/><br/>
-                        <label htmlFor="re_password" className="form-label">Confirm Password</label>
-                        <input className="form-control" type="password" id="re_password" onChange={this.handleChange} required/><br/>
-                        <center><button type="submit" className="btn btn-success authbtn" onClick={this.handleSubmit}>Sign up</button></center>
-                    </div>
+                    <div className="row input-control">
+                        <div className="col s12 m6 signup">
+                        <input className="form-control textbox" type="text" id="first_name" placeholder="First Name" onChange={this.handleChange} required/>                      
+                        </div>
+                        <div className="col s12 m5 offset-m1">
+                            <input className="form-control textbox" type="text" id="last_name" placeholder="Last Name" onChange={this.handleChange}/>
+                        </div>
+                        </div>
+                        <input className="form-control textbox" type="text" id="username" placeholder="Username" onChange={this.handleChange} required/>
+                        {this.props.regerr ? <div className="text-danger error">{this.props.regerr.response.data.username}</div>:null} 
+                        <input className="form-control textbox" type="email" id="email" placeholder="Email" onChange={this.handleChange}/>
+                        {this.props.regerr ? <div className="text-danger error">{this.props.regerr.response.data.email}</div>:null} 
+                        <input className="form-control textbox" type="password" id="password" placeholder="Password" onChange={this.handleChange} required/>
+                        {this.props.regerr ? <div className="text-danger error">{this.props.regerr.response.data.password}</div>:null} 
+                        <input className="form-control textbox" type="password" id="re_password" placeholder="Confirm Password" onChange={this.handleChange} required/>
+                        {this.props.regerr ? <div className="text-danger error">{this.props.regerr.response.data.re_password}</div>:null}
+                        {this.props.regerr ? <div className="text-danger error" align="center">{this.props.regerr.response.data.non_field_errors}</div>:null}  
+                        <center><button type="submit" className="btn btn-success authbtn mt-3 mb-4 btn-block badge-pill " onClick={this.handleSubmit}>Sign Up</button></center>
+                        
+                   
                 </form>
                 
             </div>
@@ -57,6 +62,7 @@ class Signup extends Component {
 }
 const mapStateToProps = (state) =>{
     return{
+        regerr:state.auth.regerr,
         login_status:state.auth.login_status
     }
 }
