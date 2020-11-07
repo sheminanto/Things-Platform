@@ -3,6 +3,7 @@ import { domain } from "../../config/domain.js";
 export const userLogin = (user) => {
   const url = process.env.REACT_APP_API_URL + "/auth/token/login/";
   return (dispatch, getState) => {
+    dispatch({type:'LOADING',action:true})
     axios({
       method: "post",
       url: url,
@@ -45,6 +46,7 @@ export const userLogout = () => {
 export const userSignup = (user) => {
   const url = process.env.REACT_APP_API_URL + "/auth/users/";
   return (dispatch, getState) => {
+    dispatch({type:'LOADING',action:true})
     axios({
       method: "post",
       url: url,

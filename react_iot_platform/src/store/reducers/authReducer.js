@@ -1,7 +1,9 @@
 const initState = {
    autherr:null,
    regerr:null,
-   login_status:null
+   login_status:null,
+   neterr:null,
+   loading:false
 }
 
 const authReducer = ( state = initState, action) => {
@@ -10,14 +12,16 @@ const authReducer = ( state = initState, action) => {
             return{
                 ...state,
                 login_status:true,
-                autherr:null
+                autherr:null,
+                loading:false
             }
             
         case 'AUTH_FAILED':
             console.log("autherr");
             return{
                 ...state,
-                autherr:action.err
+                autherr:action.err,
+                loading:false
             }   
         
         case 'REG_SUCCESS':
@@ -35,7 +39,18 @@ const authReducer = ( state = initState, action) => {
         case 'REG_FAILED':
             return{
                 ...state,
-                regerr:action.err
+                regerr:action.err,
+                loading:false
+            }
+        case 'NET_ERR':
+            return{
+                ...state,
+                neterr:action.err
+            }
+        case 'LOADING':
+            return{
+                ...state,  
+                loading:true
             }
         default:return state
     }
