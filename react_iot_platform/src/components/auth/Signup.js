@@ -32,7 +32,8 @@ class Signup extends Component {
         return (
             <div className="container form-rounded col-sm-4">
                 <form className="form-control shadow" onSubmit={this.handleSubmit}>
-                    <h4 className="text-dark mt-2">Sign Up</h4>
+                <div className="row"><h4 className="col-sm-4 text-dark mt-2">Sign In</h4>
+                    {this.props.loading ? <div className="clearfix col-sm-8 pt-2"><div class="spinner-border float-right" role="status"><span class="visually-hidden">Loading...</span></div></div>:null}                    </div>
                     <hr/>
                     <div className="row input-control">
                         <div className="col s12 m6 signup">
@@ -63,7 +64,8 @@ class Signup extends Component {
 const mapStateToProps = (state) =>{
     return{
         regerr:state.auth.regerr,
-        login_status:state.auth.login_status
+        login_status:state.auth.login_status,
+        loading:state.auth.loading
     }
 }
 

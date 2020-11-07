@@ -3,6 +3,7 @@ import { domain } from '../../config/domain.js'
 export const userLogin = (user) =>{
     const url = domain.localhost+'auth/token/login/'
     return(dispatch,getState) => {
+        dispatch({type:'LOADING',action:true})
         axios(
             {
                 method:'post',
@@ -13,7 +14,11 @@ export const userLogin = (user) =>{
             localStorage.setItem('token',res.data.auth_token)
             dispatch({type:'AUTH_SUCCESS',user}) 
         }).catch(err=>{
-            console.log(err.response.data.code  );
+            if(!err.response){
+                console.log("NET_ERROR");
+                dispatch({type:'NET_ERR',err:{net_err:'Network Error'}})
+            }
+            console.log(err.response.data.status);
             console.log(err.response.data);
             dispatch({type:'AUTH_FAILED',err})
         })
@@ -45,6 +50,7 @@ export const userLogout = () =>{
 export const userSignup = (user) =>{
     const url = domain.localhost+'auth/users/'
     return(dispatch,getState) =>{
+        dispatch({type:'LOADING',action:true})
         axios(
             {
                 method:'post',
