@@ -7,12 +7,23 @@ import { Redirect } from "react-router-dom";
 import logo from "../../images/logo.png";
 
 const NavBar = (props) => {
+  //Generate user initial
+  let initial = '';
+  const setInitials = () => {
+    if(props.userDetails){
+    const first_name = props.userDetails.data.first_name;
+    const last_name = props.userDetails.data.last_name;
+    initial = (first_name.charAt(0)+last_name.charAt(0)).toUpperCase();
+    }
+    
+  }
+  setInitials();
   const link = localStorage.getItem("token") ? (
-    <SignedLinks />
+    <SignedLinks initial={initial}/>
   ) : (
     <SignedOutLinks />
   );
-  if (!link) return <Redirect to="/signin" />;
+  if (!link) return <Redirect to="/signin" />; 
   return (
     <nav className="navbar bg-dark bg-gradient  ">
       <div className="container-sm">
@@ -34,6 +45,7 @@ const NavBar = (props) => {
 const mapStateToProps = (state) => {
   return {
     login_status: state.auth.login_status,
+    userDetails:state.auth.userDetails
   };
 };
 

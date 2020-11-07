@@ -4,12 +4,12 @@ import {connect} from 'react-redux';
 import { userLogout } from '../../store/actions/authActions'
 
 const SignedLinks = (props) => {
-    // console.log(this.props);
+    // console.log("signed",props);
     return(
         <ul className="list-inline mt-1">
             <li className="list-inline-item mx-2"><button type="button" className="btn btn-outline-light"><NavLink className="navigation" to='/add-device'>Add Device</NavLink></button></li>
             <li className="list-inline-item mx-2"><button type="button" className="btn btn-outline-light"><a className="navigation" onClick={props.userLogout}>Logout</a></button></li>
-            <li className="list-inline-item mx-2"><NavLink className="navigation" to='/' className='btn btn-floating btn-light'>SK</NavLink></li>
+            <li className="list-inline-item mx-2"><NavLink className="navigation" to='/' className='btn btn-floating btn-light'>{props.initial}</NavLink></li>
         </ul>
       
     )

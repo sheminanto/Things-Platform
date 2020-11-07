@@ -3,7 +3,8 @@ const initState = {
    regerr:null,
    login_status:null,
    neterr:null,
-   loading:false
+   loading:false,
+   userDetails:null
 }
 
 const authReducer = ( state = initState, action) => {
@@ -51,6 +52,12 @@ const authReducer = ( state = initState, action) => {
             return{
                 ...state,  
                 loading:true
+            }
+        case 'USER_DETAILS':
+            console.log('USER_DETAILS');
+            return{
+                ...state,
+                userDetails:action.user
             }
         default:return state
     }

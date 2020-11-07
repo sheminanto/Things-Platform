@@ -12,6 +12,20 @@ export const userLogin = (user) => {
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.auth_token);
+        
+        axios({
+          method:"get",
+          url:process.env.REACT_APP_API_URL + "/auth/users/me",
+          headers: {
+            Authorization: "Token " + localStorage.getItem("token"),
+          },
+
+        }).then(res=>{
+          console.log("details",res);
+          dispatch({type:'USER_DETAILS',user:res})
+        }).catch(err=>{
+          console.log("details",err);
+        })
         dispatch({ type: "AUTH_SUCCESS", user });
       })
       .catch((err) => {
