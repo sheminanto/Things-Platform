@@ -91,3 +91,15 @@ form h5 {
 .form-rounded {
   border-radius: 10rem;
 }
+
+.profile {
+  margin-top: 50px;
+}
+
+.profile-form {
+  margin-top: 1pt;
+}
+
+.delete {
+  height: 25px;
+}

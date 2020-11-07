@@ -7,6 +7,7 @@ import Signin from "./components/auth/Signin";
 import Signup from "./components/auth/Signup";
 import AddDevice from "./components/Devices/AddDevice";
 import PageNotFound from "./components/layout/PageNotFound";
+import Profile from './components/dashboard/Profile'
 
 console.log(process.env);
 
@@ -22,6 +23,7 @@ class App extends React.Component {
             <Route path="/signin" component={Signin} />
             <Route path="/signup" component={Signup} />
             <Route path="/add-device" component={AddDevice} />
+            <Route path="/profile"  component={Profile} />
             <Route component={PageNotFound} />
           </Switch>
         </div>

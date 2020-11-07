@@ -90,3 +90,22 @@ export const userSignup = (user) => {
       });
   };
 };
+
+export const deleteUser = (user) =>{
+  return(dispatch) => {
+      axios({
+          method:'DELETE',
+          url:process.env.REACT_APP_API_URL + "/auth/users/me/",
+          data:user,
+          headers: {
+              Authorization: "Token " + localStorage.getItem("token"),
+          },
+      }).then(res=>{
+          localStorage.clear()
+          dispatch({ type: "LOGOUT_SUCCESS" });
+          console.log(res);
+      }).catch(err=>{
+          console.log(err.response);
+      })
+  }
+  }
