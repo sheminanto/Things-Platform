@@ -58,6 +58,15 @@ form h5 {
 .navigation {
   color: white;
 }
+.default {
+  border-color: #e7e7e7;
+  color: white;
+}
+
+.default:hover {
+  background: #e7e7e7;
+  color: black;
+}
 
 .list-inline {
   padding-top: 5px;

@@ -7,8 +7,8 @@ const SignedLinks = (props) => {
     // console.log("signed",props);
     return(
         <ul className="list-inline mt-1">
-            <li className="list-inline-item mx-2"><button type="button" className="btn btn-outline-light"><NavLink className="navigation" to='/add-device'>Add Device</NavLink></button></li>
-            <li className="list-inline-item mx-2"><button type="button" className="btn btn-outline-light"><a className="navigation" onClick={props.userLogout}>Logout</a></button></li>
+            <li className="list-inline-item mx-2"><NavLink className="navigation" to='/add-device'><button type="button" className="btn btn-outline-light">Add Device</button></NavLink></li>
+            <li className="list-inline-item mx-2"><a className="navigation" onClick={props.userLogout}><button type="button" className="btn btn-outline-light">Logout</button></a></li>
             <li className="list-inline-item mx-2"><NavLink className="navigation" to='/' className='btn btn-floating btn-light'>{props.initial}</NavLink></li>
         </ul>
       
