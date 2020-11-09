@@ -20,8 +20,8 @@ class Signin extends Component {
         this.props.userLogin(this.state)
     }
     render() {
-        console.log('loading',this.props.loading);
-        if(this.props.net_err) return <Redirect to='/' />
+        // console.log('loading',this.props.loading);
+        if(this.props.neterr) return <Redirect to='/server-error' />
         const link = localStorage.getItem('token')
         if(link) return <Redirect to='/'/>
         return (
@@ -36,7 +36,7 @@ class Signin extends Component {
                         <input className="form-control textbox " type="password" id="password" placeholder="Password" onChange={this.handleChange} required/>
                         {this.props.autherr ? <div className="text-danger error">{this.props.autherr.response.data.password}</div>:null} 
                         {this.props.autherr ? <div className="text-danger error mt-2" align="center">{this.props.autherr.response.data.non_field_errors}</div>:null}
-                        {this.props.neterr ? <div className="text-danger error mt-2" align="center">{this.props.neterr.err.net_err}</div>:null}
+                        {/* {this.props.neterr ? <div className="text-danger error mt-2" align="center">{this.props.neterr.err.neterr}</div>:null} */}
                         
                         <center><hr/><button type="submit" className="btn btn-outline-success btn-block authbtn  mt-3 mb-4" onClick={this.handleSubmit}>Login</button></center>         
                     </div>

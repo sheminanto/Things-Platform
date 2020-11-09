@@ -7,19 +7,19 @@ import { Redirect } from "react-router-dom";
 import logo from "../../images/logo.png";
 
 const NavBar = (props) => {
-  //Generate user initial
+  // Generate user initial
   let initial = '';
   const setInitials = () => {
     if(props.userDetails){
-    const first_name = props.userDetails.data.first_name;
-    const last_name = props.userDetails.data.last_name;
+    const first_name = props.userDetails.first_name;
+    const last_name = props.userDetails.last_name;
     initial = (first_name.charAt(0)+last_name.charAt(0)).toUpperCase();
     }
     
   }
   setInitials();
   const link = localStorage.getItem("token") ? (
-    <SignedLinks initial={initial}/>
+    <SignedLinks initial={initial} />
   ) : (
     <SignedOutLinks />
   );

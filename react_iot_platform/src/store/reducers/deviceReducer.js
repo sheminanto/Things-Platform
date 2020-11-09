@@ -18,7 +18,6 @@ const deviceReducer = ( state = initState, action) => {
         case 'ADD_DEVICE_ERROR':
             console.log('Error adding device',action.err);
             return state;
-    
         default:
             return state;
     }

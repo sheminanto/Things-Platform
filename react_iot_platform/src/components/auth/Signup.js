@@ -27,12 +27,14 @@ class Signup extends Component {
 
 
     render() {
+        console.log(this.props);
+        if(this.props.neterr) return <Redirect to ='/server-error'></Redirect>
         const link = localStorage.getItem('token')
         if(link) return <Redirect to='/'/>
         return (
             <div className="container form-rounded col-sm-4">
                 <form className="form-control shadow" onSubmit={this.handleSubmit}>
-                <div className="row"><h4 className="col-sm-4 text-dark mt-2">Sign In</h4>
+                <div className="row"><h4 className="col-sm-4 text-dark mt-2">Sign Up</h4>
                     {this.props.loading ? <div className="clearfix col-sm-8 pt-2"><div className="spinner-border float-right" role="status"><span className="visually-hidden">Loading...</span></div></div>:null}                    </div>
                     <hr/>
                     <div className="row input-control">
@@ -65,7 +67,8 @@ const mapStateToProps = (state) =>{
     return{
         regerr:state.auth.regerr,
         login_status:state.auth.login_status,
-        loading:state.auth.loading
+        loading:state.auth.loading,
+        neterr:state.auth.neterr
     }
 }
 

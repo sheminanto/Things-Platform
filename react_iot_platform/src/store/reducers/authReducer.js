@@ -4,7 +4,8 @@ const initState = {
    login_status:null,
    neterr:null,
    loading:false,
-   userDetails:null
+   userDetails:null,
+   deleteerr:null,
 }
 
 const authReducer = ( state = initState, action) => {
@@ -28,15 +29,12 @@ const authReducer = ( state = initState, action) => {
         case 'REG_SUCCESS':
             console.log("Sign up Success",action.user);
             return{
-                ...state,
-                regerr:null
+               initState
             }
 
         case 'LOGOUT_SUCCESS':
-            return {
-                ...state,
-                login_status:false
-            }
+            // 
+            return initState
         case 'REG_FAILED':
             return{
                 ...state,
@@ -58,6 +56,11 @@ const authReducer = ( state = initState, action) => {
             return{
                 ...state,
                 userDetails:action.user
+            }
+        case 'DELETE_ERR':
+            return{
+                ...state,
+                deleteerr:action.err
             }
         default:return state
     }
