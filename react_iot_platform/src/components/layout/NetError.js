@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import '../../loading.css'
 function NetError(props) {
     // if (!props.NetError) {
     //     return <Redirect to='/signin' />

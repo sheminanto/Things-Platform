@@ -33,9 +33,14 @@ class Signup extends Component {
         if(link) return <Redirect to='/'/>
         return (
             <div className="container form-rounded col-sm-4">
+                
                 <form className="form-control shadow" onSubmit={this.handleSubmit}>
-                <div className="row"><h4 className="col-sm-4 text-dark mt-2">Sign Up</h4>
-                    {this.props.loading ? <div className="clearfix col-sm-8 pt-2"><div className="spinner-border float-right" role="status"><span className="visually-hidden">Loading...</span></div></div>:null}                    </div>
+                {this.props.loading ? <div className="linear-progress small">
+                    <div className="bar bar1"></div>
+                    <div className="bar bar2"></div>
+                </div>:null}  
+                <h4 className="col-sm-4 text-dark mt-2">Sign Up</h4>
+                                      
                     <hr/>
                     <div className="row input-control">
                         <div className="col s12 m6 signup">

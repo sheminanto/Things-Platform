@@ -27,8 +27,11 @@ class Signin extends Component {
         return (
             <div className="signin container form-rounded col-sm-3 ">
                 <form onSubmit={this.handleSubmit} className="form-control shadow">
-                    <div className="row"><h4 className="col-sm-4 text-dark mt-2">Sign In</h4>
-                    {this.props.loading ? <div className="clearfix col-sm-8 pt-2"><div className="spinner-border float-right" role="status"><span className="visually-hidden">Loading...</span></div></div>:null}                    </div>
+                {this.props.loading ? <div className="linear-progress small">
+                    <div className="bar bar1"></div>
+                    <div className="bar bar2"></div>
+                </div>:null}  
+                    <h4 className="col-sm-4 text-dark mt-2">Sign In</h4>
                     <hr/>
                     <div className="input-control">
                         <input className="form-control textbox " type="email" id="email" placeholder="E-mail" onChange={this.handleChange} required/>
