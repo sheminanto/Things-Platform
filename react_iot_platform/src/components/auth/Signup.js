@@ -35,12 +35,8 @@ class Signup extends Component {
             <div className="container form-rounded col-sm-4">
                 
                 <form className="form-control shadow" onSubmit={this.handleSubmit}>
-                {this.props.loading ? <div className="linear-progress small">
-                    <div className="bar bar1"></div>
-                    <div className="bar bar2"></div>
-                </div>:null}  
                 <h4 className="col-sm-4 text-dark mt-2">Sign Up</h4>
-                                      
+                                 
                     <hr/>
                     <div className="row input-control">
                         <div className="col s12 m6 signup">

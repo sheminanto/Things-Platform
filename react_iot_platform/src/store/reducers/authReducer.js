@@ -44,7 +44,9 @@ const authReducer = ( state = initState, action) => {
         case 'NET_ERR':
             return{
                 ...state,
-                neterr:action.err
+                neterr:action.err,
+                loading:null
+                
             }
         case 'LOADING':
             return{

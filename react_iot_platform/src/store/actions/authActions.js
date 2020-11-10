@@ -58,8 +58,10 @@ export const userLogin = (user) => {
 };
 
 export const userLogout = () => {
+  
   const url = process.env.REACT_APP_API_URL + "/auth/token/logout/";
   return (dispatch, getState) => {
+    dispatch({type:'LOADING',action:true})
     axios({
       method: "post",
       url: url,
