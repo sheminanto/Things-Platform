@@ -1,72 +1,72 @@
 const initState = {
-   autherr:null,
-   regerr:null,
-   login_status:null,
-   neterr:null,
-   loading:false,
-   userDetails:null,
-   deleteerr:null,
+    autherr: null,
+    regerr: null,
+    login_status: false,
+    neterr: null,
+    loading: false,
+    userDetails: null,
+    deleteerr: null,
 }
 
-const authReducer = ( state = initState, action) => {
-    switch(action.type){
+const authReducer = (state = initState, action) => {
+    switch (action.type) {
         case 'AUTH_SUCCESS':
-            return{
+            return {
                 ...state,
-                login_status:true,
-                autherr:null,
-                loading:false
+                login_status: true,
+                autherr: null,
+                loading: false
             }
-            
+
         case 'AUTH_FAILED':
             console.log("autherr");
-            return{
+            return {
                 ...state,
-                autherr:action.err,
-                loading:false
-            }   
-        
+                autherr: action.err,
+                loading: false
+            }
+
         case 'REG_SUCCESS':
-            console.log("Sign up Success",action.user);
-            return{
-               initState
+            console.log("Sign up Success", action.user);
+            return {
+                initState
             }
 
         case 'LOGOUT_SUCCESS':
             // 
             return initState
         case 'REG_FAILED':
-            return{
+            return {
                 ...state,
-                regerr:action.err,
-                loading:false
+                regerr: action.err,
+                loading: false
             }
         case 'NET_ERR':
-            return{
+            return {
                 ...state,
-                neterr:action.err,
-                loading:null
-                
+                neterr: action.err,
+                loading: null
+
             }
         case 'LOADING':
-            return{
-                ...state,  
-                loading:true
+            return {
+                ...state,
+                loading: true
             }
         case 'USER_DETAILS':
             console.log('USER_DETAILS');
-            return{
+            return {
                 ...state,
-                userDetails:action.user
+                userDetails: action.user
             }
         case 'DELETE_ERR':
-            return{
+            return {
                 ...state,
-                deleteerr:action.err
+                deleteerr: action.err
             }
-        default:return state
+        default: return state
     }
-    
+
 }
 
 export default authReducer

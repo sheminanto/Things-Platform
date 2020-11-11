@@ -1,12 +1,12 @@
 import React from 'react'
-import {Redirect} from 'react-router-dom'
-import {connect} from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 function DeviceDetails(props) {
     const id = props.match.params.id;
     console.log(id)
     const link = localStorage.getItem('token')
-    if(!link) return <Redirect to='/signin'/>
+    if (!link) return <Redirect to='/signin' />
     return (
         <div className="container section device-details">
             <div className="card mt-2">
@@ -17,14 +17,14 @@ function DeviceDetails(props) {
                 </div>
 
             </div>
-            
+
         </div>
     )
 }
 
-const mapStateToProps = (state) =>{
-    return{
-        login_status:state.auth.login_status
+const mapStateToProps = (state) => {
+    return {
+        login_status: state.auth.login_status
     }
 }
 
