@@ -35,18 +35,18 @@ class Profile extends React.Component {
     render() {
 
         const link = localStorage.getItem('token')
-        if (!link) return <Redirect to='/signin' />
+        if (!link) return <Redirect to='/home' />
         return (
             <div className="profile container col-sm-6  ">
                 <div className="card shadow rounded">
-                    <div class="card-body">
-                        <h5 class="card-title">User Details</h5>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">User ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {this.state.id}</li>
-                            <li class="list-group-item">Username&nbsp;&nbsp;  : {this.state.username}</li>
-                            <li class="list-group-item">First Name&nbsp;&nbsp; :  {this.state.first_name}</li>
-                            <li class="list-group-item">Last Name&nbsp;&nbsp; :  {this.state.last_name}</li>
-                            <li class="list-group-item">E-mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {this.state.email}</li>
+                    <div className="card-body">
+                        <h5 className="card-title">User Details</h5>
+                        <ul className="list-group list-group-flush">
+                            <li className="list-group-item">User ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {this.state.id}</li>
+                            <li className="list-group-item">Username&nbsp;&nbsp;  : {this.state.username}</li>
+                            <li className="list-group-item">First Name&nbsp;&nbsp; :  {this.state.first_name}</li>
+                            <li className="list-group-item">Last Name&nbsp;&nbsp; :  {this.state.last_name}</li>
+                            <li className="list-group-item">E-mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {this.state.email}</li>
                         </ul>
                         <hr />
                         <h5>Delete Account:</h5>

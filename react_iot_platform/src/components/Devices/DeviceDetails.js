@@ -6,7 +6,7 @@ function DeviceDetails(props) {
     const id = props.match.params.id;
     console.log(id)
     const link = localStorage.getItem('token')
-    if (!link) return <Redirect to='/signin' />
+    if (!link) return <Redirect to='/home' />
     return (
         <div className="container section device-details">
             <div className="card mt-2">

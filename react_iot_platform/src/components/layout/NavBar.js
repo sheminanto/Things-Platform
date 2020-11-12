@@ -1,10 +1,12 @@
-import React from "react";
+import { React } from "react";
 import { Link } from "react-router-dom";
 import SignedLinks from "./SignedLinks";
 import SignedOutLinks from "./SignedOutLinks";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import logo from "../../images/logo.png";
+import Sidebar from "./Sidebar"
+
 
 const NavBar = (props) => {
   // Generate user initial
@@ -26,10 +28,14 @@ const NavBar = (props) => {
   if (!link) return <Redirect to="/signin" />;
   const brand = props.login_status ? '/' : '/home'
   console.log(props.login_status);
+
   return (
 
     <div>
+      {localStorage.getItem('token') ? <Sidebar /> : null}
+
       <nav className="navbar bg-dark bg-gradient  ">
+
         <div className="container-sm">
           <Link to={brand} className="navbar-brand text-light" href="#">
             <img

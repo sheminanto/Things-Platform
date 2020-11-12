@@ -9,7 +9,7 @@ class Dashboard extends React.Component {
 
         const { devices } = this.props;
         const link = localStorage.getItem('token')
-        if (!link) return <Redirect to='/signin' />
+        if (!link) return <Redirect to='/home' />
         return (
             <div className="dashboard container mt-3">
                 <div className="row">
