@@ -22,6 +22,6 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('auth/', include("authapp.urls")),
-    path('auth/', include('djoser.urls.jwt')),
+    # path('auth/', include('djoser.urls.jwt')),
     path('', include("reactapp.urls")),
 ]
