@@ -38,6 +38,8 @@ INSTALLED_APPS = [
 
     # My Apps
     'authapp',
+    'reactapp',
+    'sensorapp',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,7 +52,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
-    'reactapp',
+
 ]
 
 MIDDLEWARE = [

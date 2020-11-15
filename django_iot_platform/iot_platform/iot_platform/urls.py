@@ -22,6 +22,9 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('auth/', include("authapp.urls")),
+    path('api/', include("sensorapp.urls")),
     # path('auth/', include('djoser.urls.jwt')),
+
+    # This Should Be Last
     path('', include("reactapp.urls")),
 ]
