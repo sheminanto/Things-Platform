@@ -16,7 +16,8 @@ class SensorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SensorModel
-        fields = ['id', 'parent', 'root', 'created_on']
+        fields = ['id', 'parent', 'root', 'created_on',
+                  'tag', 'description', 'updated_on']
         # flields = '__all__'
         # extra_kwargs = {'id': {'required': True}}
 

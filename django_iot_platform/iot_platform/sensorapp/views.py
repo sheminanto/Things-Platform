@@ -17,7 +17,7 @@ class SensorViewSet(viewsets.ViewSet):
     # @action(methods=['get'], detail=True, permission_classes=[IsAuthenticated, ])
     def list(self, request):
 
-        queryset = SensorModel.objects.all()
+        queryset = SensorModel.objects.filter(user=request.user)
         serializer = SensorSerializer(queryset, many=True)
         return Response(serializer.data)
 
@@ -71,8 +71,8 @@ class SensorDataViewSet(viewsets.ViewSet):
 
     def list(self, request):
 
-        queryset = SensorDataModel.objects.select_related(
-            'sensor')
+        queryset = SensorDataModel.objects.filter(sensor__user=request.user)
+
         serializer = SensorDataSerializer(queryset, many=True)
         return Response(serializer.data)
 

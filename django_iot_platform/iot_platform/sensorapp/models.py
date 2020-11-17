@@ -13,6 +13,7 @@ class SensorModel(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     tag = models.CharField(max_length=50, null=True)
     description = models.TextField(blank=True, null=True)
+    updated_on = models.DateTimeField(auto_now=True)
 
 
 class SensorDataModel(models.Model):
