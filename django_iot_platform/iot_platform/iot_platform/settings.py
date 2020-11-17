@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '#%eru&$3d3r%g_##g3@za^$lt5kz(li@q!@a02=k_4_*rjga=5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     # My Apps
     'authapp',
     'reactapp',
-    # 'sensorapp',
+    'sensorapp',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -52,12 +52,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
-    # 'debug_toolbar',
+    'debug_toolbar',
 
 ]
 
 MIDDLEWARE = [
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware',  # debug_toolbar
+    'debug_toolbar.middleware.DebugToolbarMiddleware',  # debug_toolbar
 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -170,10 +170,9 @@ USE_L10N = True
 USE_TZ = True
 
 
-# INTERNAL_IPS = [
-#     '127.0.0.1',
-
-# ]
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
 
 # Heroku
