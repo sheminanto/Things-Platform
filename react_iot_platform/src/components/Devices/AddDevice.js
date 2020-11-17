@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { addDevice } from '../../store/actions/deviceActions'
+import { addDevice, getDevices } from '../../store/actions/deviceActions'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 class AddDevice extends Component {
     state = {
         id: '',
-        name: '',
-        location: '',
+        tag: '',
+        parent: '',
         description: ''
     }
 
@@ -33,8 +33,8 @@ class AddDevice extends Component {
                     <div className="input-control">
                         <label htmlFor="id" className="form-label">Id</label>
                         <input className="form-control" type="text" id="id" onChange={this.handleChange} required /><br />
-                        <label htmlFor="name" className="form-label">Name</label>
-                        <input className="form-control" type="text" id="name" onChange={this.handleChange} required /><br />
+                        <label htmlFor="tag" className="form-label">Tag</label>
+                        <input className="form-control" type="text" id="tag" onChange={this.handleChange} required /><br />
                         <label htmlFor="location" className="form-label">Location</label>
                         <input className="form-control" type="text" id="location" onChange={this.handleChange} required /><br />
                         <label htmlFor="description" className="form-label">Description</label>
@@ -54,7 +54,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        addDevice: (device) => dispatch(addDevice(device))
+        addDevice: (device) => dispatch(addDevice(device)),
+        getDevices: dispatch(getDevices())
 
     }
 }

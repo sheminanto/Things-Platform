@@ -2,7 +2,9 @@ import React from 'react'
 import '../../welcome.css'
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import { BsCloudUpload, BsGraphUp, BsExclamationTriangle } from 'react-icons/bs';
+import { Redirect } from 'react-router-dom';
 function Welcome() {
+    if (localStorage.getItem('token')) return <Redirect to='/'></Redirect>
     return (
         <div className="container-fluid">
             <header>

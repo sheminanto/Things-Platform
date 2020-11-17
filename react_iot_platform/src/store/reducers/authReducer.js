@@ -19,7 +19,6 @@ const authReducer = (state = initState, action) => {
             }
 
         case 'AUTH_FAILED':
-            console.log("autherr");
             return {
                 ...state,
                 autherr: action.err,
@@ -27,13 +26,11 @@ const authReducer = (state = initState, action) => {
             }
 
         case 'REG_SUCCESS':
-            console.log("Sign up Success", action.user);
             return {
                 initState
             }
 
         case 'LOGOUT_SUCCESS':
-            // 
             return initState
         case 'REG_FAILED':
             return {
@@ -54,7 +51,6 @@ const authReducer = (state = initState, action) => {
                 loading: true
             }
         case 'USER_DETAILS':
-            console.log('USER_DETAILS');
             return {
                 ...state,
                 userDetails: action.user

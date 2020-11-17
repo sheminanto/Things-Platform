@@ -3,7 +3,7 @@ import Notifications from './Notifications'
 import DeviceList from '../Devices/DeviceList';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-
+import { getDevices } from '../../store/actions/deviceActions'
 class Dashboard extends React.Component {
     render() {
 
@@ -29,4 +29,9 @@ const mapStateToProps = (state) => {
         login_status: state.auth.login_status
     }
 }
-export default connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getDevices: dispatch(getDevices())
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
