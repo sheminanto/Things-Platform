@@ -1,16 +1,34 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-
+import { MdEdit, MdDelete } from 'react-icons/md'
+import { deleteDevice, getDevices, clearStatus } from '../../store/actions/deviceActions'
 class Devices extends Component {
+
     state = {
-        devices: this.props.devices
+        update: ''
     }
+    handleDelete = (id) => {
+        console.log(id);
+        this.props.deleteDevice(id)
+        console.log(this.state.devices);
+        this.setState({
+            devices: this.props.devices
+        })
+
+    }
+
     render() {
+        this.props.clearStatus();
+        console.log("Rerender");
+        console.log(this.state.device);
         if (!localStorage.getItem('token')) return <Redirect to='/'></Redirect>
+
         return (
+
             <div className="container device-table">
-                {this.state.devices.length ?
+                {/* <UpdateDevice device={this.state.update} /> */}
+                {this.props.devices.length ?
                     <div className="table-responsive">
                         <table className="table table-hover">
                             <thead>
@@ -24,7 +42,7 @@ class Devices extends Component {
 
                             </thead>
                             <tbody>
-                                {this.state.devices.map(device => {
+                                {this.props.devices && this.props.devices.map((device, index) => {
                                     return (
                                         <tr>
                                             <td>{device.id}</td>
@@ -32,6 +50,12 @@ class Devices extends Component {
                                             <td>Parent</td>
                                             <td>{device.description}</td>
                                             <td>{device.updated_on}</td>
+                                            <td>
+
+                                                <a href={`/updatedevice/` + index}><button type="button" id="edit" name="edit" className="btn btn-sm btn-primary mx-2 my-2"><MdEdit /></button></a>
+                                                <button type="button" id="delete" name="delete" className="btn btn-sm btn-danger mx-2 my-2" onClick={() => this.handleDelete(device.id)}><MdDelete /></button>
+                                            </td>
+
                                         </tr>
 
                                     )
@@ -41,7 +65,8 @@ class Devices extends Component {
 
 
                         </table>
-                    </div> : <div className="alert alert-info">No devices to display...!</div>}
+                    </div> : <div className="alert alert-info">No devices to display...!</div>
+                }
             </div>
         )
     }
@@ -54,4 +79,14 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Devices)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getDevices: dispatch(getDevices()),
+        deleteDevice: (id) => dispatch(deleteDevice(id)),
+        clearStatus: () => dispatch(clearStatus())
+
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Devices)

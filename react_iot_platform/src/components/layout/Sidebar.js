@@ -2,28 +2,28 @@ import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import { MdHome, MdAddBox, MdDevices, MdPerson } from 'react-icons/md'
 import './sidebar.css'
-import { NavLink } from 'react-router-dom'
+// import { a } from 'react-router-dom'
 
 export default props => {
     return (
         <Menu>
             <h4 className=" mt-3 mb-5">Things Platform</h4>
             <hr />
-            <NavLink className="menu-item" to="/">
+            <a className="menu-item" href="/">
                 <MdHome />&nbsp;&nbsp;&nbsp;Home
-            </NavLink>
+            </a>
             <hr />
-            <NavLink className="menu-item" to="/add-device">
+            <a className="menu-item" href="/add-device">
                 <MdAddBox />&nbsp;&nbsp;&nbsp;Add Device
-            </NavLink>
+            </a>
             <hr />
-            <NavLink className="menu-item" to="/devices">
+            <a className="menu-item" href="/devices">
                 <MdDevices />&nbsp;&nbsp;&nbsp;Devices
-            </NavLink>
+            </a>
             <hr />
-            <NavLink className="menu-item" to="/profile">
+            <a className="menu-item" href="/profile">
                 <MdPerson />&nbsp;&nbsp;&nbsp;User Profile
-            </NavLink>
+            </a>
 
         </Menu>
     );

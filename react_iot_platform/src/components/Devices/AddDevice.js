@@ -24,9 +24,12 @@ class AddDevice extends Component {
 
 
     render() {
+        console.log(this.props);
         const link = localStorage.getItem('token')
         if (!link) return <Redirect to='/home' />
+        if (this.props.addDeviceStatus === 'success') return <Redirect to='/devices' />
         return (
+
             <div className="container col-sm-6">
                 <form className="form-control" onSubmit={this.handleSubmit}>
                     <h5>Add Device</h5>
@@ -49,7 +52,8 @@ class AddDevice extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        login_status: state.auth.login_status
+        login_status: state.auth.login_status,
+        addDeviceStatus: state.device.addDeviceStatus
     }
 }
 const mapDispatchToProps = (dispatch) => {

@@ -11,6 +11,7 @@ import Profile from './components/dashboard/Profile'
 import NetError from "./components/layout/NetError";
 import Welcome from './components/layout/Welcome'
 import Devices from './components/Devices/Devices'
+import UpdateDevice from "./components/Devices/UpdateDevice";
 console.log(process.env);
 class App extends React.Component {
   render() {
@@ -28,6 +29,7 @@ class App extends React.Component {
             <Route path="/profile" component={Profile} />
             <Route path="/server-error" component={NetError} />
             <Route path="/devices" component={Devices} />
+            <Route path="/updateDevice/:id" component={UpdateDevice} />
             <Route component={PageNotFound} />
           </Switch>
         </div>

@@ -31,7 +31,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        getDevices: dispatch(getDevices())
+        getDevices: dispatch(getDevices()),
+
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

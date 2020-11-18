@@ -27,7 +27,7 @@ const NavBar = (props) => {
     );
   if (!link) return <Redirect to="/signin" />;
   const brand = props.login_status ? '/' : '/home'
-  console.log(props.login_status);
+  console.log(props.loading2);
 
   return (
 
@@ -50,7 +50,7 @@ const NavBar = (props) => {
           {link}
         </div>
       </nav>
-      {props.loading ? <div className="linear-progress small">
+      {props.loading1 || props.loading2 ? <div className="linear-progress small">
         <div className="bar bar1"></div>
         <div className="bar bar2"></div>
       </div> : null}
@@ -62,7 +62,8 @@ const mapStateToProps = (state) => {
   return {
     login_status: state.auth.login_status,
     userDetails: state.auth.userDetails,
-    loading: state.auth.loading
+    loading1: state.auth.loading,
+    loading2: state.device.loading
   };
 };
 
