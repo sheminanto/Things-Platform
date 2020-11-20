@@ -7,9 +7,10 @@ from .models import SensorModel, SensorDataModel
 
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
-import time
+
 # from rest_framework.decorators import action
 # from .permissions import IsOwner
+from django.shortcuts import get_list_or_404
 
 
 class SensorViewSet(viewsets.ViewSet):
@@ -77,8 +78,13 @@ class SensorDataViewSet(viewsets.ViewSet):
     permission_classes = [IsAuthenticated, ]
 
     def list(self, request):
+        try:
+            sensor = request.GET['sensor']
+        except:
+            return Response({'detail': 'Sensor Id Not Provided'}, status.HTTP_400_BAD_REQUEST)
 
-        queryset = SensorDataModel.objects.filter(sensor__user=request.user)
+        queryset = get_list_or_404(SensorDataModel.objects.filter(
+            sensor__user=request.user, sensor=sensor))
 
         serializer = SensorDataSerializer(queryset, many=True)
         return Response(serializer.data)
