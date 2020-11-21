@@ -14,6 +14,8 @@ class SensorModel(models.Model):
     tag = models.CharField(max_length=50, null=True)
     description = models.TextField(blank=True, null=True)
     updated_on = models.DateTimeField(auto_now=True)
+    is_parent = models.BooleanField(null=True)
+    is_root = models.BooleanField(null=True)
 
 
 class SensorDataModel(models.Model):

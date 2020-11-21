@@ -2,7 +2,7 @@ from rest_framework import viewsets, status, mixins
 from rest_framework.response import Response
 
 
-from .serializers import SensorSerializer, SensorDataSerializer
+from .serializers import SensorSerializer, SensorDataSerializer, SensorUpdateSerializer
 from .models import SensorModel, SensorDataModel
 
 from rest_framework.permissions import IsAuthenticated
@@ -10,7 +10,7 @@ from rest_framework.authentication import TokenAuthentication
 
 # from rest_framework.decorators import action
 # from .permissions import IsOwner
-from django.shortcuts import get_list_or_404
+from django.shortcuts import get_list_or_404, get_object_or_404
 
 
 class SensorViewSet(viewsets.ViewSet):
@@ -28,7 +28,26 @@ class SensorViewSet(viewsets.ViewSet):
 
         if serializer.is_valid():
 
-            serializer.save(user=request.user)
+            if request.data['root'] == request.data['parent'] == None:
+                serializer.save(user=request.user,
+                                is_root=True, is_parent=False)
+                return Response(serializer.data)
+            try:
+                root = serializer.validated_data.get('root')
+                if root.is_root != True:
+                    return Response({'detail': 'Invalid Root'}, status=status.HTTP_400_BAD_REQUEST)
+
+                parent = serializer.validated_data.get('parent')
+
+                if parent != root and parent.root != root:
+                    return Response({'detail': 'Parent and child should have same root'}, status=status.HTTP_400_BAD_REQUEST)
+                if parent.is_parent != True:
+                    parent.is_parent = True
+                    parent.save()
+            except:
+                return Response({'detail': 'parent/root is null'}, status=status.HTTP_400_BAD_REQUEST)
+
+            serializer.save(user=request.user, is_parent=False, is_root=False)
             return Response(serializer.data)
         else:
             return Response(serializer.errors,
@@ -42,16 +61,18 @@ class SensorViewSet(viewsets.ViewSet):
         check for if 'id' is present and should return 'This field cannot be empty'
         check for invalid parameters ****users can use to find the parameters from the error message ** is this an issue
         '''
-        try:
-            sensor = SensorModel.objects.get(id=request.data['id'])
 
+        try:
+            id = request.data['id']
         except:
             return Response({'detail': 'invalid key'}, status.HTTP_400_BAD_REQUEST)
+
+        sensor = get_object_or_404(SensorModel, id=id)
 
         if request.user != sensor.user:
             return Response({'detail': 'You Have No Permission'}, status.HTTP_403_FORBIDDEN)
 
-        serializer = SensorSerializer(
+        serializer = SensorUpdateSerializer(
             instance=sensor, data=request.data)
 
         if serializer.is_valid():
@@ -63,14 +84,25 @@ class SensorViewSet(viewsets.ViewSet):
     def destroy(self, request):
 
         try:
-            sensor = SensorModel.objects.get(id=request.GET['id'])
+            id = request.GET['id']
         except:
             return Response({'detail': 'invalid key'}, status.HTTP_400_BAD_REQUEST)
+        sensor = get_object_or_404(SensorModel, id=id)
 
         if request.user != sensor.user:
             return Response({'detail': 'You Have No Permission'}, status.HTTP_403_FORBIDDEN)
 
         sensor.delete()
+
+        if SensorModel.objects.filter(parent=sensor.parent_id).exists() != True:
+            if sensor.is_root == False:
+                parent = sensor.parent
+                parent.is_parent = False
+                parent.save()
+            else:
+                sensor.is_parent = False
+                sensor.save()
+
         return Response({'detail': "Successfully Deleted"})
 
 
@@ -99,10 +131,10 @@ class SensorDataViewSet(viewsets.ViewSet):
 
         try:
             SensorModel.objects.get(
-                id=request.data['sensor'], user=request.user)
+                id=request.data['sensor'], user=request.user, is_parent=False)
 
         except:
-            return Response({'detail': 'Invalid sensor or No permission'}, status.HTTP_403_FORBIDDEN)
+            return Response({'detail': 'Invalid sensor / No permission / Sensor is parent'}, status.HTTP_403_FORBIDDEN)
 
         if serializer.is_valid():
             serializer.save()
