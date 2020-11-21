@@ -1,24 +1,27 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+import { connect } from 'react-redux'
 
-const state = {
-    labels: ['1:00pm', '2:00pm', '3:00pm',
-        '4:00pm', '5:00pm'],
-    datasets: [
-        {
-            label: 'Temperature',
-            fill: false,
-            lineTension: 0.5,
-            backgroundColor: 'rgba(75,192,192,1)',
-            borderColor: 'rgba(0,0,0,1)',
-            borderWidth: 2,
-            data: ['65', 59, 80, 81, 56]
-        }
-    ]
-}
 
-export default class App extends React.Component {
+
+class GraphPlot extends React.Component {
+
     render() {
+        const state = {
+            labels: this.props.labels,
+            datasets: [
+                {
+                    label: this.props.label,
+                    fill: false,
+                    lineTension: 0.5,
+                    backgroundColor: 'rgba(75,192,192,1)',
+                    borderColor: 'rgba(0,0,0,1)',
+                    borderWidth: 2,
+                    data: this.props.data
+                }
+            ]
+        }
+
         return (
             <div className="container my-5">
                 <Line
@@ -26,7 +29,7 @@ export default class App extends React.Component {
                     options={{
                         title: {
                             display: true,
-                            text: 'Time Series Temperature Data',
+                            text: 'Time Series Data (' + this.props.label + ')',
                             fontSize: 20
                         },
                         legend: {
@@ -39,3 +42,14 @@ export default class App extends React.Component {
         );
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        login_status: state.auth.login_status,
+        devices: state.device.devices,
+        data: state.device.datas,
+        labels: state.device.labels,
+        // dataTable: state.device.dataTable,
+        fetchDataStatus: state.device.fetchDataStatus
+    }
+}
+export default connect(mapStateToProps)(GraphPlot);
