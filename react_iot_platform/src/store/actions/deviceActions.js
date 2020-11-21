@@ -106,3 +106,40 @@ export const clearStatus = () => {
         dispatch({ type: 'CLEAR_STATUS' })
     }
 }
+
+
+export const fetchData = (id) => {
+    return (dispatch) => {
+        dispatch({ type: 'CLEAR_STATUS' })
+        axios({
+            method: 'get',
+            url: process.env.REACT_APP_API_URL + "/api/data/?sensor=" + id,
+            headers: {
+                Authorization: "Token " + localStorage.getItem("token"),
+            },
+
+        }
+
+        ).then(res => {
+            dispatch({ type: 'DATA_TABLE', dataTable: res.data })
+            console.log("Fetched Data");
+            console.log(res);
+            let data = [], labels = [];
+            res.data.map(deviceData => {
+                data.push(deviceData.data)
+                let timeStamp = new Date(deviceData.datetime)
+                labels.push(timeStamp.getHours().toString() + ":" + timeStamp.getMinutes().toString())
+            })
+            console.log('data', data);
+            console.log('labels', labels);
+            const deviceData = { data: data, labels: labels }
+            console.log(deviceData);
+            dispatch({ type: 'FETCH_DATA_SUCCESS', deviceData: deviceData })
+        }).catch(err => {
+            console.log("Error fetching data");
+            console.log(err.response);
+        }
+
+        )
+    }
+}

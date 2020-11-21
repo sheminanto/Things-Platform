@@ -2,6 +2,10 @@ const initState = {
 
     loading: false,
     devices: [],
+    datas: [],
+    labels: [],
+    dataTable: [],
+    fetchDataStatus: null,
     addDeviceStatus: null,
     deleteDeviceErr: null,
     updateDeviceStatus: null,
@@ -75,7 +79,31 @@ const deviceReducer = (state = initState, action) => {
             return {
                 ...state,
                 addDeviceStatus: null,
-                updateDeviceStatus: null
+                updateDeviceStatus: null,
+                fetchDataStatus: null,
+                datas: [], labels: [], dataTables: []
+            }
+        case 'FETCH_DATA_SUCCESS':
+            console.log("fetch redux");
+            return {
+                ...state,
+                fetchDataStatus: 'success',
+                datas: action.deviceData.data,
+                labels: action.deviceData.labels,
+
+            }
+        case 'FETCH_DATA_FAILED':
+            return {
+                ...state,
+                fetchDataStatus: 'Error'
+            }
+        case 'DATA_TABLE':
+            {
+                console.log('DATA_TABLE', action.dataTable);
+                return {
+                    ...state,
+                    dataTable: action.dataTable
+                }
             }
         default:
             return state;

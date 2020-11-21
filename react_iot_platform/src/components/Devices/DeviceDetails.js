@@ -2,86 +2,99 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import GraphPlot from './GraphPlot'
-function DeviceDetails(props) {
-    const index = props.match.params.id;
-    const device = props.devices[index]
-    console.log(device)
-    const link = localStorage.getItem('token')
-    if (!link) return <Redirect to='/home' />
-    return (
-        <div className="container section device-details">
+import { fetchData } from '../../store/actions/deviceActions'
 
-            <div className="row">
-                <div className="col s12 m6">
-                    <div className="card mt-2">
-                        <span className="card-header text-dark">{device.tag}</span>
-                        <div className="card-body">
+class DeviceDetails extends React.Component {
+    state = {
+        index: '',
+        device: '',
+        data: ''
+    }
+    componentDidMount() {
+        this.props.fetchData(this.props.devices[this.props.match.params.id].id)
 
-                            <p>
-                                Device ID : {device.id}<br />
-                        Parent : {device.parent ? device.parent : "Nil"} <br />
-                        Description : {device.description} <br />
+        this.setState({
+            index: this.props.match.params.id,
+            device: this.props.devices[this.props.match.params.id],
 
-                            </p>
-                            <footer className="card-footer">Added on {device.created_on}</footer>
-                        </div>
 
+        })
+
+
+    }
+    static getDerivedStateFromProps(props) {
+        return { dataTable: props.dataTable }
+    }
+    render() {
+
+        console.log("state", this.props.dataTable);
+        const link = localStorage.getItem('token')
+        if (!link) return <Redirect to='/home' />
+        return (
+
+            <div className="container section device-details">
+                <div className="card mt-2">
+                    <span className="card-header text-dark">{this.state.device.tag}</span>
+                    <div className="card-body">
+
+                        <p>
+                            Device ID : {this.state.device.id}<br />
+                                    Parent : {this.state.device.parent ? this.state.device.parent : "Nil"} <br />
+                                    Description : {this.state.device.description} <br />
+
+                        </p>
+                        <footer className="card-footer">Added on {new Date(this.state.device.created_on).toUTCString()}</footer>
                     </div>
-                    <GraphPlot />
+
                 </div>
+                <GraphPlot label={this.state.device.tag} />
 
-                <div className="col s12 m5 offset-m1">
-                    <div className="table-responsive">
-                        <table className="table mt-2">
-                            <thead className="table-dark">
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Time</th>
-                                    <th>Data</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>18-10-2020</td>
-                                    <td>1.00pm</td>
-                                    <td>65</td>
-                                </tr>
-                                <tr>
-                                    <td>18-10-2020</td>
-                                    <td>2.00pm</td>
-                                    <td>59</td>
-                                </tr>
-                                <tr>
-                                    <td>18-10-2020</td>
-                                    <td>3.00pm</td>
-                                    <td>80</td>
-                                </tr>
-                                <tr>
-                                    <td>18-10-2020</td>
-                                    <td>4.00pm</td>
-                                    <td>81</td>
-                                </tr>
-                                <tr>
-                                    <td>18-10-2020</td>
-                                    <td>5.00pm</td>
-                                    <td>56</td>
-                                </tr>
 
-                            </tbody>
-                        </table>
-                    </div>
+                <div className="table-responsive">
+                    <table className="table table-hover mt-2">
+                        <thead className="table-dark ">
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.props.dataTable.map(device => {
+                                const timeStamp = new Date(device.datetime);
+                                const date = timeStamp.getDate().toString() + '-' + (timeStamp.getMonth() + 1).toString() + '-' + timeStamp.getFullYear().toString();
+                                return (
+                                    <tr>
+                                        <td>{date}</td>
+                                        <td>{timeStamp.getHours().toString() + ":" + timeStamp.getMinutes().toString()}</td>
+                                        <td>{device.data}</td>
+                                    </tr>)
+                            })}
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-        </div>
-    )
+        )
+    }
 }
 
 const mapStateToProps = (state) => {
     return {
         login_status: state.auth.login_status,
-        devices: state.device.devices
+        devices: state.device.devices,
+        data: state.device.datas,
+        labels: state.device.labels,
+        dataTable: state.device.dataTable,
+        fetchDataStatus: state.device.fetchDataStatus
     }
 }
 
-export default connect(mapStateToProps)(DeviceDetails)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchData: (id) => dispatch(fetchData(id))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeviceDetails)
