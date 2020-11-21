@@ -156,3 +156,9 @@ export const deleteUser = (user) => {
     })
   }
 }
+
+export const clearStatus = () => {
+  return (dispatch) => {
+    dispatch({ type: 'CLEAR_AUTH_STATUS' })
+  }
+}

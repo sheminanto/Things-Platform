@@ -60,6 +60,11 @@ const authReducer = (state = initState, action) => {
                 ...state,
                 deleteerr: action.err
             }
+        case 'CLEAR_AUTH_STATUS':
+            return {
+                ...state,
+                autherr: null
+            }
         default: return state
     }
 

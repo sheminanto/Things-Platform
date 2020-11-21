@@ -4,6 +4,7 @@ import DeviceList from '../Devices/DeviceList';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { getDevices } from '../../store/actions/deviceActions'
+
 class Dashboard extends React.Component {
     render() {
 

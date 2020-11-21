@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { MdEdit, MdDelete } from 'react-icons/md'
+import { MdEdit, MdDelete, MdVisibility } from 'react-icons/md'
 import { deleteDevice, getDevices, clearStatus } from '../../store/actions/deviceActions'
 class Devices extends Component {
 
@@ -51,9 +51,9 @@ class Devices extends Component {
                                             <td>{device.description}</td>
                                             <td>{device.updated_on}</td>
                                             <td>
-
-                                                <a href={`/updatedevice/` + index}><button type="button" id="edit" name="edit" className="btn btn-sm btn-primary mx-2 my-2"><MdEdit /></button></a>
-                                                <button type="button" id="delete" name="delete" className="btn btn-sm btn-danger mx-2 my-2" onClick={() => this.handleDelete(device.id)}><MdDelete /></button>
+                                                <a href={`/device/` + index}><button type="button" id="edit" name="edit" className="device-btn btn btn-sm btn-dark mx-1 my-2"><MdVisibility /></button></a>
+                                                <a href={`/updatedevice/` + index}><button type="button" id="edit" name="edit" className="device-btn btn btn-sm btn-primary mx-1 my-2"><MdEdit /></button></a>
+                                                <button type="button" id="delete" name="delete" className="device-btn btn btn-sm btn-danger mx-1 my-2" onClick={() => this.handleDelete(device.id)}><MdDelete /></button>
                                             </td>
 
                                         </tr>

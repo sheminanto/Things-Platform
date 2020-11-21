@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { userLogin } from '../../store/actions/authActions'
+import { clearStatus, userLogin } from '../../store/actions/authActions'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
@@ -56,7 +56,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        userLogin: (user) => dispatch(userLogin(user))
+        userLogin: (user) => dispatch(userLogin(user)),
+        clearStatus: () => dispatch(clearStatus())
     }
 }
 
