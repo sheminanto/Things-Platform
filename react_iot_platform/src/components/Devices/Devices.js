@@ -49,7 +49,7 @@ class Devices extends Component {
                                             <td>{device.tag}</td>
                                             <td>Parent</td>
                                             <td>{device.description}</td>
-                                            <td>{device.updated_on}</td>
+                                            <td>{new Date(device.updated_on).toUTCString()}</td>
                                             <td>
                                                 <a href={`/device/` + index}><button type="button" id="edit" name="edit" className="device-btn btn btn-sm btn-dark mx-1 my-2" onClick={this.props.fetchData(device.id)}><MdVisibility /></button></a>
                                                 <a href={`/updatedevice/` + index}><button type="button" id="edit" name="edit" className="device-btn btn btn-sm btn-primary mx-1 my-2"><MdEdit /></button></a>

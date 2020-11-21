@@ -24,6 +24,7 @@ class GraphPlot extends React.Component {
 
         return (
             <div className="container my-5">
+
                 <Line
                     data={state}
                     options={{
@@ -34,7 +35,7 @@ class GraphPlot extends React.Component {
                         },
                         legend: {
                             display: true,
-                            position: 'right'
+                            position: "bottom"
                         }
                     }}
                 />

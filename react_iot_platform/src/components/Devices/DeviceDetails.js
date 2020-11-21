@@ -43,7 +43,7 @@ class DeviceDetails extends React.Component {
                                     Description : {this.state.device.description} <br />
 
                         </p>
-                        <footer className="card-footer">Added on {this.state.device.created_on}</footer>
+                        <footer className="card-footer">Added on {new Date(this.state.device.created_on).toUTCString()}</footer>
                     </div>
 
                 </div>
@@ -51,8 +51,8 @@ class DeviceDetails extends React.Component {
 
 
                 <div className="table-responsive">
-                    <table className="table mt-2">
-                        <thead className="table-dark">
+                    <table className="table table-hover mt-2">
+                        <thead className="table-dark ">
                             <tr>
                                 <th>Date</th>
                                 <th>Time</th>
