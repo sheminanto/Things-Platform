@@ -130,9 +130,9 @@ export const fetchData = (id) => {
                 let timeStamp = new Date(deviceData.datetime)
                 labels.push(timeStamp.getHours().toString() + ":" + timeStamp.getMinutes().toString())
             })
-            console.log('data', data);
-            console.log('labels', labels);
-            const deviceData = { data: data, labels: labels }
+            console.log(data.slice(-10));
+            console.log(labels.slice(-10));
+            const deviceData = { data: data.slice(-10), labels: labels.slice(-10) }
             console.log(deviceData);
             dispatch({ type: 'FETCH_DATA_SUCCESS', deviceData: deviceData })
         }).catch(err => {

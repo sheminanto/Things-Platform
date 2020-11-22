@@ -2,7 +2,6 @@ import React from 'react';
 import Overview from '../Devices/Overview'
 
 const DeviceList = ({ devices }) => {
-    // console.log(devices.length);
     return (
 
         <div className="device-list section">

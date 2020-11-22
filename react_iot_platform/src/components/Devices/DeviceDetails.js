@@ -11,7 +11,8 @@ class DeviceDetails extends React.Component {
         data: ''
     }
     componentDidMount() {
-        this.props.fetchData(this.props.devices[this.props.match.params.id].id)
+
+        setInterval(this.props.fetchData(this.props.devices[this.props.match.params.id].id), 100000)
 
         this.setState({
             index: this.props.match.params.id,
@@ -27,7 +28,7 @@ class DeviceDetails extends React.Component {
     }
     render() {
 
-        console.log("state", this.props.dataTable);
+        console.log("state", this.state);
         const link = localStorage.getItem('token')
         if (!link) return <Redirect to='/home' />
         return (

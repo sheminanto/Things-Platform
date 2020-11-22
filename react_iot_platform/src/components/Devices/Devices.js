@@ -1,33 +1,23 @@
 import React, { Component, useState } from 'react'
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { MdEdit, MdDelete, MdVisibility } from 'react-icons/md'
 import { deleteDevice, getDevices, clearStatus, fetchData } from '../../store/actions/deviceActions'
 class Devices extends Component {
 
-    state = {
-        update: ''
-    }
     handleDelete = (id) => {
         console.log(id);
         this.props.deleteDevice(id)
-        console.log(this.state.devices);
-        this.setState({
-            devices: this.props.devices
-        })
 
     }
 
     render() {
         this.props.clearStatus();
-        console.log("Rerender");
-        console.log(this.state.device);
         if (!localStorage.getItem('token')) return <Redirect to='/'></Redirect>
 
         return (
 
             <div className="container device-table">
-                {/* <UpdateDevice device={this.state.update} /> */}
                 {this.props.devices.length ?
                     <div className="table-responsive">
                         <table className="table table-hover">
@@ -51,9 +41,10 @@ class Devices extends Component {
                                             <td>{device.description}</td>
                                             <td>{new Date(device.updated_on).toUTCString()}</td>
                                             <td>
-                                                <a href={`/device/` + index}><button type="button" id="edit" name="edit" className="device-btn btn btn-sm btn-dark mx-1 my-2" onClick={this.props.fetchData(device.id)}><MdVisibility /></button></a>
-                                                <a href={`/updatedevice/` + index}><button type="button" id="edit" name="edit" className="device-btn btn btn-sm btn-primary mx-1 my-2"><MdEdit /></button></a>
+
+                                                <NavLink to={`/updatedevice/` + index}><button type="button" id="edit" name="edit" className="device-btn btn btn-sm btn-primary mx-1 my-2"><MdEdit /></button></NavLink>
                                                 <button type="button" id="delete" name="delete" className="device-btn btn btn-sm btn-danger mx-1 my-2" onClick={() => this.handleDelete(device.id)}><MdDelete /></button>
+                                                {device.is_root ? null : <NavLink to={`/device/` + index}><button type="button" id="edit" name="edit" className="device-btn btn btn-sm btn-dark mx-1 my-2" onClick={() => { this.props.fetchData(device.id) }}><MdVisibility /></button></NavLink>}
                                             </td>
 
                                         </tr>
