@@ -21,19 +21,22 @@ const NavBar = (props) => {
   const link = localStorage.getItem("token") ? (
     <SignedLinks initial={initial} />
   ) : (
-    <SignedOutLinks />
-  );
+      <SignedOutLinks />
+    );
   if (!link) return <Redirect to="/signin" />;
   const brand = props.login_status ? "/" : "/home";
   console.log(props.loading2);
 
   return (
     <div>
-      {localStorage.getItem("token") ? <Sidebar /> : null}
+      {/* {localStorage.getItem("token") ? <Sidebar /> : null} */}
 
-      <nav className="navbar bg-dark bg-gradient ">
+      <nav className="navbar navbar-dark bg-dark flex-md-nowrap p-0 shadow-lg sticky-top ">
         <div className="container-fluid mx-1">
-          <Link to={brand} className="navbar-brand text-light" href="#">
+          <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <Link to={brand} className="navbar-brand text-light ml-5" href="#">
             <img
               className="rounded d-inline-block align-top"
               width="30"

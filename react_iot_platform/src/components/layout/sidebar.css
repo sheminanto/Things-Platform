@@ -2,8 +2,8 @@
   position: absolute;
   width: 26px;
   height: 20px;
-  left: 26px;
-  top: 26px;
+  left: 16px;
+  top: 13px;
 }
 
 .bm-burger-bars {
@@ -62,4 +62,15 @@
 
 .bm-item:hover {
   color: #ffffff;
+}
+
+.sidebar {
+  height: 100%;
+}
+
+.menu-item {
+  text-decoration: none;
+  color: #000000;
+  padding-left: 40px;
+  padding-top: 20px;
 }

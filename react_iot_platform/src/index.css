@@ -9,7 +9,7 @@ body {
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #eee;
+  /* background: rgb(121, 116, 116); */
 }
 
 code {
@@ -99,4 +99,10 @@ form h5 {
 
 .device-btn {
   border-radius: 50%;
+}
+
+#sidebarMenu {
+  height: calc(100vh - 48px);
+
+  background: rgb(121, 116, 116);
 }
