@@ -49,7 +49,6 @@ const mapStateToProps = (state) => {
         devices: state.device.devices,
         data: state.device.datas,
         labels: state.device.labels,
-        // dataTable: state.device.dataTable,
         fetchDataStatus: state.device.fetchDataStatus
     }
 }

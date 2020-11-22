@@ -40,8 +40,8 @@ class UpdateDevice extends Component {
                         <input className="form-control" type="text" id="id" value={this.state.id} onChange={this.handleChange} readOnly /><br />
                         <label htmlFor="tag" className="form-label">Tag</label>
                         <input className="form-control" type="text" id="tag" value={this.state.tag} onChange={this.handleChange} required /><br />
-                        <label htmlFor="location" className="form-label">Location</label>
-                        <input className="form-control" type="text" id="location" onChange={this.handleChange} required /><br />
+                        {/* <label htmlFor="location" className="form-label">Location</label>
+                        <input className="form-control" type="text" id="location" onChange={this.handleChange} required /><br /> */}
                         <label htmlFor="description" className="form-label">Description</label>
                         <textarea className="form-control" type="textarea" id="description" value={this.state.description} onChange={this.handleChange} required /><br />
                         <center><button type="submit" className="btn btn-primary addbtn" onClick={this.handleSubmit}>Update</button></center>
