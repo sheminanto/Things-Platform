@@ -26,3 +26,5 @@ yarn-debug.log*
 yarn-error.log*
 
 django_iot_platform/iot_platform/db.sqlite3
+*.sqlite3
+

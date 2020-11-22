@@ -99,9 +99,6 @@ class SensorViewSet(viewsets.ViewSet):
                 parent = sensor.parent
                 parent.is_parent = False
                 parent.save()
-            else:
-                sensor.is_parent = False
-                sensor.save()
 
         return Response({'detail': "Successfully Deleted"})
 
