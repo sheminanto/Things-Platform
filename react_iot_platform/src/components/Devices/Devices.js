@@ -25,7 +25,7 @@ class Devices extends Component {
                                 <tr>
                                     <th>ID</th>
                                     <th>Tag</th>
-                                    <th>Parent/Root</th>
+                                    <th>Parent</th>
                                     <th>Description</th>
                                     <th>Last modified</th>
                                 </tr>
@@ -37,7 +37,7 @@ class Devices extends Component {
                                         <tr>
                                             <td>{device.id}</td>
                                             <td>{device.tag}</td>
-                                            <td>Parent</td>
+                                            <td>{device.parent ? device.parent : "Nil"}</td>
                                             <td>{device.description}</td>
                                             <td>{new Date(device.updated_on).toUTCString()}</td>
                                             <td>

@@ -78,7 +78,10 @@ class AddDevice extends Component {
                                     )
                                 })}
                             </ul>
+                            <br />
+                            Parent : {this.state.parent}
                         </div> : null}
+
                         <hr />
                         <label htmlFor="description" className="form-label">Description</label>
                         <textarea className="form-control" type="textarea" id="description" onChange={this.handleChange} required /><br />
