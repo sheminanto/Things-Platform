@@ -5,38 +5,34 @@ import SignedOutLinks from "./SignedOutLinks";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import logo from "../../images/logo.png";
-import Sidebar from "./Sidebar"
-
+import Sidebar from "./Sidebar";
 
 const NavBar = (props) => {
   // Generate user initial
-  let initial = '';
+  let initial = "";
   const setInitials = () => {
     if (props.userDetails) {
       const first_name = props.userDetails.first_name;
       const last_name = props.userDetails.last_name;
       initial = (first_name.charAt(0) + last_name.charAt(0)).toUpperCase();
     }
-
-  }
+  };
   setInitials();
   const link = localStorage.getItem("token") ? (
     <SignedLinks initial={initial} />
   ) : (
-      <SignedOutLinks />
-    );
+    <SignedOutLinks />
+  );
   if (!link) return <Redirect to="/signin" />;
-  const brand = props.login_status ? '/' : '/home'
+  const brand = props.login_status ? "/" : "/home";
   console.log(props.loading2);
 
   return (
-
     <div>
-      {localStorage.getItem('token') ? <Sidebar /> : null}
+      {localStorage.getItem("token") ? <Sidebar /> : null}
 
-      <nav className="navbar bg-dark bg-gradient  ">
-
-        <div className="container-sm">
+      <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow ">
+        <div className="container-fluid mx-1">
           <Link to={brand} className="navbar-brand text-light" href="#">
             <img
               className="rounded d-inline-block align-top"
@@ -45,17 +41,18 @@ const NavBar = (props) => {
               src={logo}
               alt=""
             />{" "}
-          THINGS PLATFORM
-        </Link>
+            THINGS PLATFORM
+          </Link>
           {link}
         </div>
       </nav>
-      {props.loading1 || props.loading2 ? <div className="linear-progress small">
-        <div className="bar bar1"></div>
-        <div className="bar bar2"></div>
-      </div> : null}
+      {props.loading1 || props.loading2 ? (
+        <div className="linear-progress small">
+          <div className="bar bar1"></div>
+          <div className="bar bar2"></div>
+        </div>
+      ) : null}
     </div>
-
   );
 };
 const mapStateToProps = (state) => {
@@ -63,7 +60,7 @@ const mapStateToProps = (state) => {
     login_status: state.auth.login_status,
     userDetails: state.auth.userDetails,
     loading1: state.auth.loading,
-    loading2: state.device.loading
+    loading2: state.device.loading,
   };
 };
 

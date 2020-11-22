@@ -4,7 +4,7 @@ import uuid
 
 
 class SensorModel(models.Model):
-    id = models.CharField(primary_key=True, max_length=64)
+    id = models.CharField(primary_key=True, max_length=64, blank=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     parent = models.ForeignKey(
         'self', on_delete=models.CASCADE, null=True, related_name='parent_sensor')
