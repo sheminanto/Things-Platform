@@ -29,9 +29,9 @@ const NavBar = (props) => {
 
   return (
     <div>
-      {/* {localStorage.getItem("token") ? <Sidebar /> : null} */}
+      {localStorage.getItem("token") ? <Sidebar /> : null}
 
-      <nav className="navbar navbar-dark bg-dark flex-md-nowrap p-0 shadow-lg sticky-top ">
+      <nav className="navbar navbar-dark bg-dark flex-md-nowrap p-0 shadow-lg ">
         <div className="container-fluid mx-1">
           <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
