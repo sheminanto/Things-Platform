@@ -27,7 +27,8 @@ SECRET_KEY = '#%eru&$3d3r%g_##g3@za^$lt5kz(li@q!@a02=k_4_*rjga=5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['http://localhost:3000', 'http://localhost:5000',    'https://things-platform.herokuapp.com',
+                 'https://thingsplatform.netlify.app', ]
 
 
 # Application definition
@@ -189,13 +190,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'build', 'static')
 STATICFILES_DIRS = []
 
 
-CORS_ORIGIN_ALLOW_ALL = True  # added to solve CORS
+# CORS_ORIGIN_ALLOW_ALL = True  # added to solve CORS
 
-# CORS_ORIGIN_WHITELIST = [
-#    "www.example.com",
-#    "http://127.0.0.1:8000",
-#    ...
-# ]
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'https://things-platform.herokuapp.com',
+    'https://thingsplatform.netlify.app',
+]
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
