@@ -27,7 +27,7 @@ SECRET_KEY = '#%eru&$3d3r%g_##g3@za^$lt5kz(li@q!@a02=k_4_*rjga=5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
 
     # My Apps
     'authapp',
+    'reactapp',
+    'sensorapp',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,21 +52,24 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
-    'reactapp',
+    'debug_toolbar',
+
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',  # debug_toolbar
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
+
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'corsheaders.middleware.CorsMiddleware',  # added to solve CORS
-
     'django.middleware.common.CommonMiddleware',
+
 
     'whitenoise.middleware.WhiteNoiseMiddleware',  # for heroku
 
@@ -163,6 +168,12 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+
 
 # Heroku
 django_heroku.settings(locals())
