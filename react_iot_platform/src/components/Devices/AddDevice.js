@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { addDevice, getDevices } from '../../store/actions/deviceActions'
+import { addDevice, getDevices, clearStatus } from '../../store/actions/deviceActions'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 class AddDevice extends Component {
@@ -9,7 +9,8 @@ class AddDevice extends Component {
         description: '',
         parent: null,
         root: null,
-        selectedOption: ''
+        selectedOption: 'root'
+
     }
 
     handleChange = (e) => {
@@ -37,7 +38,8 @@ class AddDevice extends Component {
     }
 
     render() {
-        console.log(this.props);
+        // this.props.clearStatus()
+        console.log(this.props.addDeviceStatus);
         const link = localStorage.getItem('token')
         if (!link) return <Redirect to='/home' />
         if (this.selectedOption === 'parent') {
@@ -46,12 +48,13 @@ class AddDevice extends Component {
         if (this.props.addDeviceStatus === 'success') return <Redirect to='/devices' />
         return (
 
-            <div className="container col-sm-6">
-                <form className="form-control" onSubmit={this.handleSubmit}>
-                    <h5>Add Device</h5>
+            <div className="container col-sm-6 ">
+                <form className="form-control shadow" onSubmit={this.handleSubmit}>
+                    <h5>Add Device</h5><hr />
                     <div className="input-control">
                         <label htmlFor="id" className="form-label">Id</label>
-                        <input className="form-control" type="text" id="id" onChange={this.handleChange} required /><br />
+                        <input className="form-control" type="text" id="id" onChange={this.handleChange} required />
+                        {this.props.addDeviceStatus !== 'success' && this.props.addDeviceStatus !== null ? <div className="text-danger">{this.props.addDeviceStatus.data.id}</div> : null}
                         <label htmlFor="tag" className="form-label">Tag</label>
                         <input className="form-control" type="text" id="tag" onChange={this.handleChange} required /><br />
                         {/* <label htmlFor="location" className="form-label">Location</label>
@@ -62,12 +65,14 @@ class AddDevice extends Component {
                         <div className="row">
                             <div className="radio">
                                 <label>
-                                    <input type="radio" id="selectedOption" value="root" checked={this.state.selectedOption === 'root'} onChange={this.handleChange} /> Root </label>
+                                    <input className="mx-2" type="radio" id="selectedOption" value="root" checked={this.state.selectedOption === 'root'} onChange={this.handleChange} /> Root
+                                <input className="mx-2" type="radio" id="selectedOption" value="child" checked={this.state.selectedOption === 'child'} onChange={this.handleChange} />Child</label>
                             </div>
-                            <div className="radio">
+                            {/* <div className="radio">
                                 <label>
                                     <input type="radio" id="selectedOption" value="child" checked={this.state.selectedOption === 'child'} onChange={this.handleChange} />Child</label>
-                            </div></div>
+                            </div> */}
+                        </div>
                         {this.state.selectedOption === 'child' ? <div className="dropdown">
                             <button className="btn btn-secondary dropdown-toggle" type="button" id="selectParent" data-toggle="dropdown" aria-expanded="false">Select Parent</button>
 
@@ -85,11 +90,12 @@ class AddDevice extends Component {
                         <hr />
                         <label htmlFor="description" className="form-label">Description</label>
                         <textarea className="form-control" type="textarea" id="description" onChange={this.handleChange} required /><br />
-                        <center><button type="submit" className="btn btn-primary addbtn" onClick={this.handleSubmit}>Add</button></center>
+                        <center><button type="submit" disabled={this.state.selectedOption === 'child' && !this.state.parent} className="btn btn btn-dark addbtn" onClick={this.handleSubmit}>Add</button></center>
+
                     </div>
                 </form>
 
-            </div>
+            </div >
         )
     }
 }
@@ -103,6 +109,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addDevice: (device) => dispatch(addDevice(device)),
+        clearStatus: () => dispatch(clearStatus()),
 
 
 

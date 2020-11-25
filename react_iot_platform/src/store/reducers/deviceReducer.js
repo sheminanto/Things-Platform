@@ -9,7 +9,7 @@ const initState = {
     addDeviceStatus: null,
     deleteDeviceErr: null,
     updateDeviceStatus: null,
-    fetchDeviceErr: null
+    fetchDeviceErr: null,
 }
 
 const deviceReducer = (state = initState, action) => {

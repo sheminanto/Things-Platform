@@ -13,7 +13,7 @@ function Welcome() {
     <div className="container-fluid px-0">
       <header>
         <div id="intro">
-          <div className="mask rgba-black-strong">
+          <div className="mask rgba-black-strong pr-0">
             <div className="container-fluid d-flex align-items-center justify-content-center h-100">
               <div className="row d-flex justify-content-center text-center mt-5">
                 <div className="col-md-12">

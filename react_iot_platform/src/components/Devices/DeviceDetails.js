@@ -28,14 +28,14 @@ class DeviceDetails extends React.Component {
     }
     render() {
 
-        console.log("state", this.state);
+        console.log("state", this.props.dataTable);
         const link = localStorage.getItem('token')
         if (!link) return <Redirect to='/home' />
         return (
 
             <div className="container section device-details">
-                <div className="card mt-2">
-                    <span className="card-header text-dark">{this.state.device.tag}</span>
+                <div className="card mt-2 shadow">
+                    <span className="card-header text-light bg-secondary">{this.state.device.tag}</span>
                     <div className="card-body">
 
                         <p>
@@ -44,37 +44,43 @@ class DeviceDetails extends React.Component {
                                     Description : {this.state.device.description} <br />
 
                         </p>
-                        <footer className="card-footer">Added on {new Date(this.state.device.created_on).toUTCString()}</footer>
+
                     </div>
+                    <footer className="card-footer">Added on {new Date(this.state.device.created_on).toUTCString()}</footer>
 
                 </div>
-                <GraphPlot label={this.state.device.tag} />
-
-
-                <div className="table-responsive">
-                    <table className="table table-hover mt-2">
-                        <thead className="table-dark ">
-                            <tr>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Data</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.props.dataTable.map(device => {
-                                const timeStamp = new Date(device.datetime);
-                                const date = timeStamp.getDate().toString() + '-' + (timeStamp.getMonth() + 1).toString() + '-' + timeStamp.getFullYear().toString();
-                                return (
+                {this.props.dataTable.length ?
+                    <div>
+                        <GraphPlot label={this.state.device.tag} />
+                        <div className="table-responsive shadow" >
+                            <table className="table table-hover mt-2">
+                                <thead className="table-dark ">
                                     <tr>
-                                        <td>{date}</td>
-                                        <td>{timeStamp.getHours().toString() + ":" + timeStamp.getMinutes().toString()}</td>
-                                        <td>{device.data}</td>
-                                    </tr>)
-                            })}
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.props.dataTable.map(device => {
+                                        const timeStamp = new Date(device.datetime);
+                                        const date = timeStamp.getDate().toString() + '-' + (timeStamp.getMonth() + 1).toString() + '-' + timeStamp.getFullYear().toString();
+                                        return (
+                                            <tr>
+                                                <td>{date}</td>
+                                                <td>{timeStamp.getHours().toString() + ":" + timeStamp.getMinutes().toString()}</td>
+                                                <td>{device.data}</td>
+                                            </tr>)
+                                    })}
 
-                        </tbody>
-                    </table>
-                </div>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div> : <div className="alert alert-info mt-3 shadow">No data records available...!</div>}
+
+
+
+
             </div>
 
         )

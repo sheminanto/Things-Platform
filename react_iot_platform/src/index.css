@@ -106,3 +106,8 @@ form h5 {
 
   background: rgb(121, 116, 116);
 }
+
+.addbtn,
+.updatebtn {
+  width: 150px;
+}

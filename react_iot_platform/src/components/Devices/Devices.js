@@ -17,7 +17,7 @@ class Devices extends Component {
 
         return (
 
-            <div className="container device-table">
+            <div className="container-fluid device-table">
                 {this.props.devices.length ?
                     <div className="table-responsive">
                         <table className="table table-hover">

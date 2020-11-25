@@ -13,7 +13,7 @@ class Dashboard extends React.Component {
         const link = localStorage.getItem('token')
         if (!link) return <Redirect to='/home' />
         return (
-            <div className="dashboard container-fluid ">
+            <div className="dashboard container-fluid mt-3 ">
                 {/* <div className="row">
                     <div id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                         <SideBar1 />

@@ -33,8 +33,8 @@ class UpdateDevice extends Component {
         if (this.props.loading === false && this.props.updateDeviceStatus === "success") return <Redirect to='/devices' />
         return (
             <div className="container col-sm-6">
-                <form className="form-control" onSubmit={this.handleSubmit}>
-                    <h5>Update Device</h5>
+                <form className="form-control shadow" onSubmit={this.handleSubmit}>
+                    <h5>Update Device</h5><hr />
                     <div className="input-control">
                         <label htmlFor="id" className="form-label">Id</label>
                         <input className="form-control" type="text" id="id" value={this.state.id} onChange={this.handleChange} readOnly /><br />
@@ -44,7 +44,7 @@ class UpdateDevice extends Component {
                         <input className="form-control" type="text" id="location" onChange={this.handleChange} required /><br /> */}
                         <label htmlFor="description" className="form-label">Description</label>
                         <textarea className="form-control" type="textarea" id="description" value={this.state.description} onChange={this.handleChange} required /><br />
-                        <center><button type="submit" className="btn btn-primary addbtn" onClick={this.handleSubmit}>Update</button></center>
+                        <center><button type="submit" className="btn btn-dark updatebtn" onClick={this.handleSubmit}>Update</button></center>
                     </div>
                 </form>
 

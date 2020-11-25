@@ -23,7 +23,7 @@ class GraphPlot extends React.Component {
         }
 
         return (
-            <div className="container my-5">
+            <div className="container my-5 shadow">
 
                 <Line
                     data={state}

@@ -33,9 +33,9 @@ const NavBar = (props) => {
 
       <nav className="navbar navbar-dark bg-dark flex-md-nowrap p-0 shadow-lg ">
         <div className="container-fluid mx-1">
-          <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          {/* <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-          </button>
+          </button> */}
           <Link to={brand} className="navbar-brand text-light ml-5" href="#">
             <img
               className="rounded d-inline-block align-top"
