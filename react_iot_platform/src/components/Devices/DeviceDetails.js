@@ -49,7 +49,7 @@ class DeviceDetails extends React.Component {
                     <footer className="card-footer">Added on {new Date(this.state.device.created_on).toUTCString()}</footer>
 
                 </div>
-                {this.props.dataTable.length ?
+                {this.props.data.length ?
                     <div>
                         <GraphPlot label={this.state.device.tag} />
                         <div className="table-responsive shadow" >
